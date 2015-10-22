@@ -18,12 +18,16 @@
                             <option value="option 1">option 1</option>
                             <option value="option 2">option 2</option>
                             <option value="option 3">option 3</option></select><i></i></span></div></div>
-            <div class="element-multiple"><label class="title">Selecione um ou mais colaboradores<span class="required">*</span></label><div class="large"><select data-no-selected="Nothing selected" name="multiple[]" multiple="multiple" required="required">
+            <div class="element-multiple"><label class="title">Selecione um ou mais colaboradores<span class="required">*</span></label>
+                <div class="large">
+                    <select data-no-selected="Nothing selected" name="multiple[]" multiple="multiple" required="required">
 
                         <option value="option 1">option 1</option>
                         <option value="option 2">option 2</option>
-                        <option value="option 3">option 3</option></select></div></div>
+                        <option value="option 3">option 3</option></select>
+                </div>
+            </div>
+            <div class="submit"><input type="submit" value="Incluir"/></div></form>
             <script type="text/javascript" src="scripts/formoid-metro-cyan.js"></script>
-
     </body>
 </html>
