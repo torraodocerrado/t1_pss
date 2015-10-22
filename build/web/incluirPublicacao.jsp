@@ -27,7 +27,9 @@
                         <option value="option 3">option 3</option></select>
                 </div>
             </div>
-            <div class="submit"><input type="submit" value="Incluir"/></div></form>
-            <script type="text/javascript" src="scripts/formoid-metro-cyan.js"></script>
+            <div class="submit">
+                <a href="index.html">Voltar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="submit" value="Incluir"/></div></form>
+        <script type="text/javascript" src="scripts/formoid-metro-cyan.js"></script>
     </body>
 </html>

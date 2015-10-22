@@ -16,7 +16,9 @@
             <div class="element-input"><label class="title">Agência financiadora<span class="required">*</span></label><input class="medium" type="text" name="input" required="required"/></div>
             <div class="element-textarea"><label class="title">Objetivo<span class="required">*</span></label><textarea class="medium" name="textarea" cols="20" rows="5" required="required"></textarea></div>
             <div class="element-textarea"><label class="title">Descrição<span class="required">*</span></label><textarea class="medium" name="textarea1" cols="20" rows="5" required="required"></textarea></div>
-            <div class="submit"><input type="submit" value="Incluir"/></div></form>
+            <div class="submit">
+                <a href="index.html">Voltar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="submit" value="Incluir"/></div></form>
         <script type="text/javascript" src="scripts/formoid-metro-cyan.js"></script>
     </body>
 </html>

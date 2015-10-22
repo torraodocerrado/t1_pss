@@ -13,7 +13,9 @@
             <div class="element-input"><label class="title">Id<span class="required">*</span></label><input class="small" type="text" name="input1" required="required"/></div>
             <div class="element-input"><label class="title">Nome<span class="required">*</span></label><input class="large" type="text" name="input" required="required"/></div>
             <div class="element-input"><label class="title">E-mail<span class="required">*</span></label><input class="medium" type="text" name="input2" required="required"/></div>
-            <div class="submit"><input type="submit" value="Incluir"/></div></form>
+            <div class="submit">
+                <a href="index.html">Voltar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="submit" value="Incluir"/></div></form>
         <script type="text/javascript" src="scripts/formoid-metro-cyan.js"></script>
 
     </body>
