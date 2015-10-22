@@ -9,7 +9,7 @@
 
         <link rel="stylesheet" href="scripts/formoid-metro-cyan.css" type="text/css" />
         <script type="text/javascript" src="scripts/jquery.min.js"></script>
-        <form class="formoid-metro-cyan" style="background-color:#FFFFFF;font-size:14px;font-family:'Lato', sans-serif;color:#666666;max-width:800px;min-width:150px" method="post"><div class="title"><h2>Incluir publicação</h2></div>
+        <form class="formoid-metro-cyan" style="background-color:#FFFFFF;font-size:14px;font-family:'Trebuchet MS',Helvetica,sans-serif;color:#666666;max-width:800px;min-width:150px" method="post"><div class="title"><h2>Incluir publicação</h2></div>
             <div class="element-input"><label class="title">Título<span class="required">*</span></label><input class="large" type="text" name="input" required="required"/></div>
             <div class="element-input"><label class="title">Conferência<span class="required">*</span></label><input class="large" type="text" name="input1" required="required"/></div>
             <div class="element-number"><label class="title">Ano publicação</label><input class="small" type="text" min="1900" max="2015" name="number"  value=""/></div>

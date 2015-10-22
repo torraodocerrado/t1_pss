@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="scripts/formoid-metro-cyan.css" type="text/css" />
         <script type="text/javascript" src="scripts/jquery.min.js"></script>
 
-        <form class="formoid-metro-cyan" style="background-color:#FFFFFF;font-size:14px;font-family:'Lato', sans-serif;color:#666666;max-width:800px;min-width:150px" method="post"><div class="title"><h2>Incluir colaboradores a um projeto</h2></div>
+        <form class="formoid-metro-cyan" style="background-color:#FFFFFF;font-size:14px;font-family:'Trebuchet MS',Helvetica,sans-serif;color:#666666;max-width:800px;min-width:150px" method="post"><div class="title"><h2>Incluir colaboradores a um projeto</h2></div>
             <div class="element-select"><label class="title">Selecionar o projeto<span class="required">*</span></label><div class="large"><span>
                         <select name="select" required="required">
                             <option value="option 1">option 1</option>
