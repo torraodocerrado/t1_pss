@@ -18,7 +18,7 @@
             </div>
             <input type="hidden" value="consultaColaborador" name="command">
         </form>
-        <script type="text/javascript" src="scripts/formoid-metro-cyan.js"></script>
+        <script type="text/javascript" src="scripts/formoid-metro-cyan.js" charset="UTF-8"></script>
     </body>
 </html>
 

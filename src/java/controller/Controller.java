@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.sql.Date;
@@ -12,6 +11,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.AlunoGraduacao;
+import model.AlunoPosGraduacao;
+import model.Colaborador;
+import model.Pesquisador;
+import model.Professor;
 import model.Projeto;
 
 /**
@@ -38,10 +42,7 @@ public class Controller extends HttpServlet {
         this.output = "";
         response.setContentType("text/html;charset=UTF-8");
         if (this.request.getParameterMap().containsKey("memoria")) {
-            this.getMemoria(this.request.getParameter("memoria"));
-            try (PrintWriter out = response.getWriter()) {
-                out.print(output);
-            }
+            response.sendRedirect("memoria.jsp?memoria=" + this.request.getParameter("memoria"));
         } else if (this.request != null && this.request.getParameterMap().containsKey("command") && !this.request.getParameter("command").isEmpty()) {
             try {
                 Method method = this.getClass().getMethod(this.request.getParameter("command"));
@@ -76,26 +77,77 @@ public class Controller extends HttpServlet {
     }
 
     public void incluirProjeto() {
-        Projeto projeto = new Projeto();
-        projeto.setTitulo(this.request.getParameter("titulo"));
-        projeto.setDataInicio(Date.valueOf(this.request.getParameter("dataInicio")));
-        projeto.setValorFinanciado(this.request.getParameter("valorFinanciado"));
-        projeto.setAgenciaFinanciadora(this.request.getParameter("agenciaFinanciadora"));
-        projeto.setObjetivo(this.request.getParameter("objetivo"));
-        projeto.setDescricao(this.request.getParameter("descricao"));
-        mem.add(projeto.getTitulo(), projeto);
+        Projeto projeto = new Projeto(
+                this.request.getParameter("titulo"),
+                this.request.getParameter("agenciaFinanciadora"),
+                this.request.getParameter("valorFinanciado"),
+                this.request.getParameter("objetivo"),
+                this.request.getParameter("descricao"),
+                Date.valueOf(this.request.getParameter("dataInicio"))
+        );
+        mem.add(projeto);
         this.param = "?status=1";
     }
 
-    private void getMemoria(String parameter) {
-        switch (parameter.toLowerCase()) {
-            case "all":
-                for (Object mem1 : mem.getAll().values()) {
-                    output += mem1.toString();
+    public void incluirAlunoGraduacao() {
+        AlunoGraduacao aluno = new AlunoGraduacao(
+                Integer.valueOf(this.request.getParameter("id")),
+                this.request.getParameter("nome"),
+                this.request.getParameter("email"),
+                Integer.valueOf(this.request.getParameter("orientador")),
+                Date.valueOf(this.request.getParameter("dataIngresso"))
+        );
+        mem.add(aluno);
+        this.param = "?status=1";
+    }
+
+    public void incluirAlunoPosGraduacao() {
+        AlunoPosGraduacao aluno = new AlunoPosGraduacao(
+                Integer.valueOf(this.request.getParameter("id")),
+                this.request.getParameter("nome"),
+                this.request.getParameter("email"),
+                Integer.valueOf(this.request.getParameter("orientador")),
+                Date.valueOf(this.request.getParameter("dataIngresso")),
+                this.request.getParameter("regime"),
+                this.request.getParameter("curso")
+        );
+        mem.add(aluno);
+        this.param = "?status=1";
+    }
+
+    public void incluirProfessor() {
+        Professor professor = new Professor(
+                Integer.valueOf(this.request.getParameter("id")),
+                this.request.getParameter("nome"),
+                this.request.getParameter("email")
+        );
+        mem.add(professor);
+        this.param = "?status=1";
+    }
+
+    public void incluirPesquisador() {
+        Pesquisador pesquisador = new Pesquisador(
+                Integer.valueOf(this.request.getParameter("id")),
+                this.request.getParameter("nome"),
+                this.request.getParameter("email")
+        );
+        mem.add(pesquisador);
+        this.param = "?status=1";
+    }
+
+    public void incluirColaboradoresProjeto() {
+        for (Object proj : mem.getAll()) {
+            if ((proj instanceof Projeto) && (((Projeto) proj).getTitulo().equals(this.request.getParameter("projeto")))) {
+                for (Object col : mem.getAll()) {
+                    if ((col instanceof Colaborador) && (((Colaborador) col).getId() == Integer.valueOf(this.request.getParameter("colaborador")))) {
+                        if (!((Projeto) proj).colaboradores.contains((Colaborador) col)) {
+                            ((Projeto) proj).colaboradores.add((Colaborador) col);
+                        }
+                    }
                 }
-                break;
-            default:
+            }
         }
+        this.param = "?status=1";
     }
 
 }

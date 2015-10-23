@@ -5,6 +5,7 @@
  */
 package model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -21,10 +22,7 @@ public class Projeto {
     private String situacao;
     private Date dataInicio;
     private Date dataFim;
-
-    public Projeto() {
-        this.situacao = "Em elaboração";
-    }
+    public ArrayList<Colaborador> colaboradores;
 
     public Date getDataInicio() {
         return dataInicio;
@@ -90,6 +88,17 @@ public class Projeto {
         this.situacao = situacao;
     }
 
+    public Projeto(String titulo, String agenciaFinanciadora, String valorFinanciado, String objetivo, String descricao, Date dataInicio) {
+        this.titulo = titulo;
+        this.agenciaFinanciadora = agenciaFinanciadora;
+        this.valorFinanciado = valorFinanciado;
+        this.objetivo = objetivo;
+        this.descricao = descricao;
+        this.dataInicio = dataInicio;
+        this.situacao = "Em elaboração";
+        this.colaboradores = new ArrayList<>();
+    }
+
     @Override
     public String toString() {
         String result = "";
@@ -102,6 +111,9 @@ public class Projeto {
         result += "<li><b>Data Início: </b>" + getDataInicio() + "<br></li>";
         if (this.getDataFim() != null) {
             result += "<li><b>Data Fim: </b>" + getDataFim() + "<br></li>";
+        }
+        for (Colaborador colaborador : colaboradores) {
+            result += "<li><b>Colaborador: </b><br> " + colaborador.toString() + "<br></li>";
         }
         return result + "</ul>";
     }

@@ -6,7 +6,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body class="blurBg-false" style="background-color:#EBEBEB">
-
         <link rel="stylesheet" href="scripts/formoid-metro-cyan.css" type="text/css" />
         <script type="text/javascript" src="scripts/jquery.min.js"></script>
 
@@ -30,6 +29,6 @@
             </div>
             <input type="hidden" name="command" value="incluirProjeto">
         </form>
-        <script type="text/javascript" src="scripts/formoid-metro-cyan.js"></script>
+        <script type="text/javascript" src="scripts/formoid-metro-cyan.js" charset="UTF-8"></script>
     </body>
 </html>

@@ -1,7 +1,6 @@
 package controller;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
 
 /**
  *
@@ -9,24 +8,30 @@ import java.util.Map;
  */
 public class Memoria {
 
-    private static Map memoria;
+    private static ArrayList<Object> memoria;
 
     public Memoria() {
-        if (memoria != null) {
-            memoria = new HashMap();
+        if (memoria == null) {
+            memoria = new ArrayList<>();
         }
     }
 
-    public void add(String id, Object object) {
-        memoria.put(id, object);
+    public void add(Object object) {
+        memoria.add(object);
     }
 
-    public Object get(String id) {
-        return memoria.get(id);
-    }
-
-    public Map getAll() {
+    public ArrayList<Object> getAll() {
         return memoria;
+    }
+
+    public ArrayList<Object> getAll(Class className) {
+        ArrayList<Object> temp = new ArrayList<>();
+        for (Object mem : memoria) {
+            if (className.isInstance(mem)) {
+                temp.add(mem);
+            }
+        }
+        return temp;
     }
 
 }

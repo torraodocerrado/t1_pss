@@ -30,6 +30,6 @@
             <div class="submit">
                 <a href="index.html">Voltar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <input type="submit" value="Incluir"/></div></form>
-        <script type="text/javascript" src="scripts/formoid-metro-cyan.js"></script>
+        <script type="text/javascript" src="scripts/formoid-metro-cyan.js" charset="UTF-8"></script>
     </body>
 </html>
