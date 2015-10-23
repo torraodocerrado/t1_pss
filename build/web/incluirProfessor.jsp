@@ -9,14 +9,7 @@
         <link rel="stylesheet" href="scripts/formoid-metro-cyan.css" type="text/css" />
         <script type="text/javascript" src="scripts/jquery.min.js"></script>
 
-
-        <% String status = request.getParameter("status");
-            if ((status != null) && (status.equals("1"))) {%>
-        <div class="formoid-metro-cyan" style="text-align: center; background-color:#FFFFFF;font-size:14px;font-family:'Trebuchet MS',Helvetica,sans-serif;color:#999999;max-width:800px;min-width:150px">
-            <h3 class="section-break-title">Professor salvo com sucesso!</h3>
-        </div>
-        <%}%>
-
+        <jsp:include page="helpers/msgSalvo.jsp.jsp"/>
 
         <form action="Controller" class="formoid-metro-cyan" style="background-color:#FFFFFF;font-size:14px;font-family:'Trebuchet MS',Helvetica,sans-serif;color:#666666;max-width:800px;min-width:150px" method="post"><div class="title"><h2>Incluir professor</h2></div>
             <div class="element-input"><label class="title">Id<span class="required">*</span></label><input class="small" type="number" name="id" required="required"/></div>

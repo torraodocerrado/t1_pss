@@ -11,9 +11,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Aluno;
 import model.AlunoGraduacao;
 import model.AlunoPosGraduacao;
 import model.Colaborador;
+import model.Orientacao;
 import model.Pesquisador;
 import model.Professor;
 import model.Projeto;
@@ -94,7 +96,7 @@ public class Controller extends HttpServlet {
                 Integer.valueOf(this.request.getParameter("id")),
                 this.request.getParameter("nome"),
                 this.request.getParameter("email"),
-                Integer.valueOf(this.request.getParameter("orientador")),
+                this.getProfessor(Integer.valueOf(this.request.getParameter("professor"))),
                 Date.valueOf(this.request.getParameter("dataIngresso"))
         );
         mem.add(aluno);
@@ -106,7 +108,7 @@ public class Controller extends HttpServlet {
                 Integer.valueOf(this.request.getParameter("id")),
                 this.request.getParameter("nome"),
                 this.request.getParameter("email"),
-                Integer.valueOf(this.request.getParameter("orientador")),
+                this.getProfessor(Integer.valueOf(this.request.getParameter("professor"))),
                 Date.valueOf(this.request.getParameter("dataIngresso")),
                 this.request.getParameter("regime"),
                 this.request.getParameter("curso")
@@ -148,6 +150,32 @@ public class Controller extends HttpServlet {
             }
         }
         this.param = "?status=1";
+    }
+
+    public void incluirOrientacao() {
+        Professor professor = this.getProfessor(Integer.valueOf(this.request.getParameter("professor")));
+        Aluno aluno = this.getAluno(Integer.valueOf(this.request.getParameter("aluno")));
+        Orientacao orientacao = new Orientacao(this.request.getParameter("titulo"), this.request.getParameter("tipo"), professor, aluno);
+        mem.add(orientacao);
+        this.param = "?status=1";
+    }
+
+    public Professor getProfessor(int id) {
+        for (Object obj : mem.getAll()) {
+            if ((obj instanceof Professor) && (((Professor) obj).getId() == id)) {
+                return (Professor) obj;
+            }
+        }
+        return null;
+    }
+
+    private Aluno getAluno(int id) {
+        for (Object ojb : mem.getAll()) {
+            if ((ojb instanceof Aluno) && (((Aluno) ojb).getId() == id)) {
+                return (Aluno) ojb;
+            }
+        }
+        return null;
     }
 
 }

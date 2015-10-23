@@ -27,7 +27,7 @@ public class AlunoPosGraduacao extends Aluno {
         this.curso = curso;
     }
 
-    public AlunoPosGraduacao(int id, String nome, String email, int orientador, Date dataIngresso, String regime, String curso) {
+    public AlunoPosGraduacao(int id, String nome, String email, Professor orientador, Date dataIngresso, String regime, String curso) {
         super(id, nome, email, orientador, dataIngresso);
         this.regime = regime;
         this.curso = curso;
@@ -41,8 +41,8 @@ public class AlunoPosGraduacao extends Aluno {
         result += "<li><b>Nome: </b>" + getNome() + "<br></li>";
         result += "<li><b>Email: </b>" + getEmail() + "<br></li>";
         result += "<li><b>Data ingresso: </b>" + getDataIngresso() + "<br></li>";
-        result += "<li><b>Orientador: </b>" + getOrientador() + "<br></li>";
         result += "<li><b>Regime de curso: </b>" + getRegime() + "<br></li>";
+        result += "<li><b>Orientador: </b><br>" + getOrientador() + "<br></li>";
         return result + "</ul>";
     }
 

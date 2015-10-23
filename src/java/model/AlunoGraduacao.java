@@ -8,7 +8,7 @@ import java.util.Date;
  */
 public class AlunoGraduacao extends Aluno {
 
-    public AlunoGraduacao(int id, String nome, String email, int orientador, Date dataIngresso) {
+    public AlunoGraduacao(int id, String nome, String email, Professor orientador, Date dataIngresso) {
         super(id, nome, email, orientador, dataIngresso);
     }
 
