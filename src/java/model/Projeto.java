@@ -137,18 +137,6 @@ public class Projeto {
         }
     }
 
-    public void mudarSituacao() {
-        switch (this.getSituacao()) {
-            case "Em elaboração":
-                this.setSituacao("Em andamento");
-                break;
-            case "Em andamento":
-                this.setSituacao("Concluído");
-                this.setDataFim(new Date());
-                break;
-        }
-    }
-
     public boolean validoMudancaStatus() {
         switch (this.getSituacao()) {
             case "Em elaboração":

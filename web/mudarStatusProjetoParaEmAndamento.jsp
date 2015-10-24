@@ -13,14 +13,15 @@
 
         <jsp:include page="helpers/msgSalvo.jsp" />
 
-        <form action="Controller" class="formoid-metro-cyan" style="background-color:#FFFFFF;font-size:14px;font-family:'Trebuchet MS',Helvetica,sans-serif;color:#666666;max-width:800px;min-width:150px" method="post"><div class="title"><h2>Incluir aluno de graduação</h2></div>
+        <form action="Controller" class="formoid-metro-cyan" style="background-color:#FFFFFF;font-size:14px;font-family:'Trebuchet MS',Helvetica,sans-serif;color:#666666;max-width:800px;min-width:150px" method="post">
+            <div class="title"><h2>Mudar situação de um projeto para Em Andamento</h2></div>
             <%@page contentType="text/html" pageEncoding="UTF-8"%>
             <%Memoria memoria = new Memoria();%>
             <div class="element-select"><label class="title">Selecionar o projeto<span class="required">*</span></label>
                 <div class="large">
                     <span>
                         <select name="projeto" required="required">
-                            <% for (Projeto mem : memoria.getProjetoMudancaSituacao()) {%>
+                            <% for (Projeto mem : memoria.getProjetoMudancaSituacaoEmAndamento()) {%>
                             <option value="<%=((Projeto) mem).getTitulo()%>"><%=((Projeto) mem).getTituloMudancaSituacao()%></option>
                             <%}%>
                         </select>
@@ -30,7 +31,7 @@
 
             <jsp:include page="helpers/submit.jsp"/>
 
-            <input type="hidden" name="command" value="alterarStatusProjeto">
+            <input type="hidden" name="command" value="mudarStatusProjetoParaEmAndamento">
         </form>
         <script type="text/javascript" src="scripts/formoid-metro-cyan.js" charset="UTF-8"></script>
 

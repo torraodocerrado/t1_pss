@@ -80,10 +80,16 @@ public class Memoria {
         return result;
     }
 
-    public ArrayList<Projeto> getProjetoMudancaSituacao() {
+    public ArrayList<Projeto> getProjetoMudancaSituacaoEmAndamento() {
+        ArrayList<Projeto> result = new ArrayList<>();
+        result.addAll(this.getProjetosEmElaboracao());
+        result = this.validaProjetosMudancaSituacao(result);
+        return result;
+    }
+
+    public ArrayList<Projeto> getProjetoMudancaSituacaoConcluido() {
         ArrayList<Projeto> result = new ArrayList<>();
         result.addAll(this.getProjetosEmAndamento());
-        result.addAll(this.getProjetosEmElaboracao());
         result = this.validaProjetosMudancaSituacao(result);
         return result;
     }

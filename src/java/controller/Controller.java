@@ -235,10 +235,20 @@ public class Controller extends HttpServlet {
         this.param = "?status=1";
     }
 
-    public void alterarStatusProjeto() {
+    public void mudarStatusProjetoParaEmAndamento() {
         for (Object obj : mem.getAll()) {
             if ((obj instanceof Projeto) && (((Projeto) obj).getTitulo().equals(this.request.getParameter("projeto")))) {
-                ((Projeto) obj).mudarSituacao();
+                ((Projeto) obj).setSituacao("Em andamento");
+            }
+        }
+        this.param = "?status=1";
+    }
+
+    public void mudarStatusProjetoParaConcluido() {
+        for (Object obj : mem.getAll()) {
+            if ((obj instanceof Projeto) && (((Projeto) obj).getTitulo().equals(this.request.getParameter("projeto")))) {
+                ((Projeto) obj).setSituacao("Concluído");
+                ((Projeto) obj).setDataFim(Date.valueOf(this.request.getParameter("dataFim")));
             }
         }
         this.param = "?status=1";

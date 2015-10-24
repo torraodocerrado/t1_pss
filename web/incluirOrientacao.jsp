@@ -27,6 +27,7 @@
                 </div>
             </div>
 
+
             <jsp:include page="helpers/boxProfessor.jsp"/>
             <jsp:include page="helpers/boxAluno.jsp"/>
 

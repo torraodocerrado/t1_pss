@@ -1,266 +1,72 @@
 <!DOCTYPE html>
 <html>
-    <head data-gwd-animation-mode="quickMode">
-        <meta charset="utf-8">
-        <title>Sistema acadêmico PSS</title>
-        <style type="text/css">
-            html, body {
-                width: 100%;
-                height: 100%;
-                margin: 0px;
-            }
-            body {
-                -webkit-transform: perspective(1400px) matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-                -webkit-transform-style: preserve-3d;
-                background-color: transparent;
-            }
-            .gwd-canvas-t2qs {
-                left: 441px;
-                top: 135.5px;
-            }
-            .gwd-canvas-1r0u {
-                left: 200px;
-                top: 213px;
-            }
-            .gwd-canvas-169o {
-                left: 445px;
-                top: 286px;
-            }
-            .gwd-canvas-1huq {
-                left: 200px;
-                top: 357px;
-            }
-            .gwd-canvas-7vym {
-                left: 281px;
-                top: 362.5px;
-            }
-            .gwd-canvas-zrc5 {
-                left: 37px;
-                top: 437px;
-            }
-            .gwd-canvas-17b4 {
-                position: absolute;
-                width: 296px;
-                height: 107px;
-                left: 200px;
-                top: 78px;
-                -webkit-transform-style: preserve-3d;
-            }
-            .gwd-canvas-xrmb {
-                height: 95.88px;
-                left: 278px;
-                top: 70px;
-            }
-            .gwd-canvas-1tur {
-                height: 95.88px;
-                left: 514px;
-                top: 125.06px;
-            }
-            .gwd-canvas-xddz {
-                height: 95.88px;
-                left: 278px;
-                top: 185.59px;
-            }
-            .gwd-canvas-hebf {
-                height: 95.88px;
-                left: 514px;
-                top: 244.23px;
-            }
-            .gwd-canvas-11u3 {
-                height: 95.88px;
-                left: 278px;
-                top: 306.06px;
-            }
-            .gwd-canvas-17eg {
-                height: 95.88px;
-                left: 514px;
-                top: 473.62px;
-            }
-            .gwd-canvas-huo9 {
-                height: 95.88px;
-                left: 514px;
-                top: 357.13px;
-            }
-            .gwd-canvas-1aly {
-                height: 95.88px;
-                left: 279px;
-                top: 421.65px;
-            }
-            .gwd-div-ssf3 {
-                position: absolute;
-                color: rgb(0, 0, 0);
-                font-family: Arial;
-                left: 343px;
-                top: 57.5px;
-                width: 250px;
-                height: 25px;
-                text-align: center;
-            }
-            .gwd-div-1uxs {
-                left: 278.5px;
-                top: 100px;
-            }
-            .gwd-div-1fxb {
-                left: 343px;
-                top: 422.5px;
-            }
-            .gwd-div-vnpr {
-                left: 559.5px;
-                top: 386px;
-            }
-            .gwd-div-3ii7 {
-                left: 279px;
-                top: 325px;
-            }
-            .gwd-div-w8wp {
-                position: absolute;
-                height: 30px;
-                font-family: Arial;
-                text-align: center;
-                color: rgb(0, 0, 0);
-                width: 250px;
-                left: 560px;
-                top: 276px;
-            }
-            .gwd-div-1sgr {
-                position: absolute;
-                height: 32px;
-                font-family: Arial;
-                text-align: center;
-                color: rgb(0, 0, 0);
-                width: 250px;
-                left: 559.500000000001px;
-                top: 153.5px;
-            }
-            .gwd-div-1hmh {
-                position: absolute;
-                font-family: Arial;
-                text-align: center;
-                color: rgb(0, 0, 0);
-                height: 50px;
-                width: 250px;
-                left: 281px;
-                top: 216.5px;
-            }
-            .gwd-div-1ori {
-                position: absolute;
-                height: 31px;
-                color: rgb(0, 0, 0);
-                font-family: Arial;
-                text-align: center;
-                width: 250px;
-                left: 281.5px;
-                top: 463px;
-            }
-            .gwd-div-1ays {
-                position: absolute;
-                color: rgb(0, 0, 0);
-                font-family: Arial;
-                width: 250px;
-                text-align: center;
-                left: 559.806201550388px;
-                top: 516px;
-                height: 100px;
-            }
-            .gwd-canvas-1ial {
-                position: absolute;
-                width: 528px;
-                height: 37px;
-                -webkit-transform-style: preserve-3d;
-                left: 281.5px;
-                top: 13px;
-            }
-            .gwd-div-1o6h {
-                position: absolute;
-                height: 18.5px;
-                color: rgb(0, 0, 0);
-                top: 21.5px;
-                text-align: center;
-                font-family: 'arial black';
-                left: 282px;
-                width: 520px;
-            }
-            .gwd-div-1evd {
-                position: absolute;
-                font-family: 'Times New Roman';
-                text-align: left;
-                color: rgb(0, 0, 0);
-                left: 641px;
-                top: 72px;
-            }
-            .gwd-a-5lnt {
-                border-color: rgb(0, 0, 238);
-                color: rgb(0, 0, 238);
-                outline-color: rgb(0, 0, 238);
-                text-decoration: underline;
-                -webkit-column-rule-color: rgb(0, 0, 238);
-                -webkit-text-decorations-in-effect: underline;
-                -webkit-text-emphasis-color: rgb(0, 0, 238);
-                -webkit-text-fill-color: rgb(0, 0, 238);
-                -webkit-text-stroke-color: rgb(0, 0, 238);
-            }
-            .gwd-canvas-kfh2 {
-                left: 278px;
-                top: 537.551578947369px;
-            }
-            .gwd-div-14si {
-                left: 303.806201550388px;
-                top: 552px;
-            }
-        </style>
-        <script data-source="googbase_min.js" data-version="3" data-exports-type="googbase" type="text/javascript" src="index/googbase_min.js"></script>
-        <script data-source="gwd_webcomponents_min.js" data-version="4" data-exports-type="gwd_webcomponents" type="text/javascript" src="index/gwd_webcomponents_min.js"></script>
-        <script data-source="gwdrectangle_min.js" data-version="3" data-exports-type="gwd-rectangle" type="text/javascript" src="index/gwdrectangle_min.js"></script>
+    <head>
+        <meta charset="utf-8" />
+        <title>Sistema acadêmico - PSS</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
+    <body class="blurBg-false" style="background-color:#EBEBEB">
+        <link rel="stylesheet" href="scripts/formoid-metro-cyan.css" type="text/css" charset="UTF-8"/>
+        <script type="text/javascript" src="scripts/jquery.min.js" charset="UTF-8"></script>
 
-    <body>
-        <canvas is="gwd-rectangle" width="296" height="95" class="gwd-canvas-17b4 gwd-canvas-xrmb" x-off="0" y-off="0" stroke-width="1" stroke-color="[1,1,1,1]" fill-color="[0.8392156862745098,0.9254901960784314,0.9450980392156862,1]" tl-radius="0" tr-radius="0"
-                bl-radius="0" br-radius="0" stroke-style="Solid"></canvas>
-        <canvas is="gwd-rectangle" width="296" height="95" class="gwd-canvas-t2qs gwd-canvas-17b4 gwd-canvas-1tur" x-off="0" y-off="0" stroke-width="1" stroke-color="[1,1,1,1]" fill-color="[0.788235294117647,1,0.8549019607843137,1]" tl-radius="0" tr-radius="0"
-                bl-radius="0" br-radius="0" stroke-style="Solid"></canvas>
-        <canvas is="gwd-rectangle" width="296" height="95" class="gwd-canvas-t2qs gwd-canvas-1r0u gwd-canvas-17b4 gwd-canvas-xddz" x-off="0" y-off="0" stroke-width="1" stroke-color="[1,1,1,1]" fill-color="[0.9725490196078431,0.9568627450980393,0.7647058823529411,1]"
-                tl-radius="0" tr-radius="0" bl-radius="0" br-radius="0" stroke-style="Solid"></canvas>
-        <canvas is="gwd-rectangle" width="296" height="95" class="gwd-canvas-t2qs gwd-canvas-1r0u gwd-canvas-169o gwd-canvas-17b4 gwd-canvas-hebf" x-off="0" y-off="0" stroke-width="1" stroke-color="[1,1,1,1]" fill-color="[0.8392156862745098,0.9254901960784314,0.9450980392156862,1]"
-                tl-radius="0" tr-radius="0" bl-radius="0" br-radius="0" stroke-style="Solid"></canvas>
-        <div class="gwd-div-1hmh" style=""><a href="incluirAlunoPosGraduacao.jsp">Incluir aluno de pós-graduação</a>
-        </div>
-        <canvas is="gwd-rectangle" width="296" height="95" class="gwd-canvas-t2qs gwd-canvas-1r0u gwd-canvas-169o gwd-canvas-1huq gwd-canvas-17b4 gwd-canvas-11u3" x-off="0" y-off="0" stroke-width="1" stroke-color="[1,1,1,1]" fill-color="[0.788235294117647,1,0.8549019607843137,1]"
-                tl-radius="0" tr-radius="0" bl-radius="0" br-radius="0" stroke-style="Solid"></canvas>
-        <canvas is="gwd-rectangle" width="296" height="95" class="gwd-canvas-t2qs gwd-canvas-1r0u gwd-canvas-169o gwd-canvas-1huq gwd-canvas-7vym gwd-canvas-17b4 gwd-canvas-huo9" x-off="0" y-off="0" stroke-width="1" stroke-color="[1,1,1,1]" fill-color="[0.9725490196078431,0.9568627450980393,0.7647058823529411,1]"
-                tl-radius="0" tr-radius="0" bl-radius="0" br-radius="0" stroke-style="Solid"></canvas>
-        <canvas is="gwd-rectangle" width="296" height="95" class="gwd-canvas-t2qs gwd-canvas-1r0u gwd-canvas-169o gwd-canvas-1huq gwd-canvas-7vym gwd-canvas-zrc5 gwd-canvas-17b4 gwd-canvas-1aly" x-off="0" y-off="0" stroke-width="1" stroke-color="[1,1,1,1]" fill-color="[0.8392156862745098,0.9254901960784314,0.9450980392156862,1]"
-                tl-radius="0" tr-radius="0" bl-radius="0" br-radius="0" stroke-style="Solid"></canvas>
-        <canvas is="gwd-rectangle" width="296" height="95" class="gwd-canvas-t2qs gwd-canvas-1r0u gwd-canvas-169o gwd-canvas-1huq gwd-canvas-7vym gwd-canvas-zrc5 gwd-canvas-17b4 gwd-canvas-17eg" x-off="0" y-off="0" stroke-width="1" stroke-color="[1,1,1,1]" fill-color="[0.788235294117647,1,0.8549019607843137,1]"
-                tl-radius="0" tr-radius="0" bl-radius="0" br-radius="0" stroke-style="Solid"></canvas>
-        <div class="gwd-div-w8wp"><a href="incluirProfessor.jsp">Incluir Professor</a></div>
-        <div class="gwd-div-1sgr"><a href="incluirPesquisador.jsp">Incluir Pesquisador</a></div>
-        <div class="gwd-div-ssf3 gwd-div-1fxb gwd-div-3ii7"><a href="incluirProjeto.jsp">Incluir Projeto</a>
-            <br><br><a href="incluirColaboradoresProjeto.jsp">Incluir colaboradores
-                <br>a um projeto</a>
-        </div>
-        <div class="gwd-div-ssf3 gwd-div-1fxb gwd-div-vnpr"><a href="incluirColaboradoresProjeto.jsp">Incluir colaboradores a um projeto</a>
-        </div>
-        <div class="gwd-div-ssf3 gwd-div-1uxs"><a href="incluirAlunoGraduacao.jsp">Incluir aluno de graduação</a>
-        </div>
-        <div class="gwd-div-1ori" style=""><a href="incluirOrientacao.jsp">Incluir orientação</a>
-        </div>
-        <div class="gwd-div-1ays" style=""><a href="incluirPublicacao.jsp">Incluir Publicação</a>
-        </div>
-        <div class="gwd-div-1o6h">INF2125 - PSS - Trabalho Experimental</div>
-        <div class="gwd-div-1evd">Rafael Pereira de Oliveira
-            <div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Mat. 1512356</div>
-        </div>
-        <canvas is="gwd-rectangle" width="296" height="95" class="gwd-canvas-t2qs gwd-canvas-1r0u gwd-canvas-169o gwd-canvas-1huq gwd-canvas-7vym gwd-canvas-zrc5 gwd-canvas-17b4 gwd-canvas-17eg gwd-canvas-kfh2" x-off="0" y-off="0" stroke-width="1" stroke-color="[1,1,1,1]"
-                fill-color="[0.9725490196078431,0.9568627450980393,0.7647058823529411,1]" tl-radius="0" tr-radius="0" bl-radius="0" br-radius="0" stroke-style="Solid"></canvas>
-        <div class="gwd-div-1ays gwd-div-14si">
-            <a href="consultaColaborador.jsp" class="gwd-a-5lnt">Consulta por colaborador</a>
-            <br>
-            <a href="consultaProjeto.jsp" class="gwd-a-5lnt">Consulta por projeto</a>
-            <br>
-            <a href="relatorioProducaoAcademica.jsp" class="gwd-a-5lnt">Relatório de produção acadêmica</a>
-            <br>
-            <a href="Controller?memoria=all" class="gwd-a-5lnt">Exibir memória</a>
-        </div>
+        <form class="formoid-metro-cyan" style="background-color:#FFFFFF;font-size:14px;font-family:'Trebuchet MS',Helvetica,sans-serif;color:#666666;max-width:800px;min-width:150px" method="post">
+            <div class="title">
+                <h2>INF2125 - PSS - Trabalho Experimental</h2>
+            </div>
+            <div class="element-input">
+                <style type="text/css">
+                    .tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;margin:0px auto;}
+                    .tg td{font-family:Arial, sans-serif;font-size:14px;padding:17px 20px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
+                    .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:17px 20px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+                    .tg .tg-0vih{background-color:#f9f9f9;font-weight:bold;text-align:center;vertical-align:top}
+                    .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}
+                    .tg .tg-yw4l{vertical-align:top}
+                    .tg .tg-b7b8{background-color:#f9f9f9;vertical-align:top}
+                    @media screen and (max-width: 767px) {.tg {width: auto !important;}.tg col {width: auto !important;}.tg-wrap {overflow-x: auto;-webkit-overflow-scrolling: touch;margin: auto 0px;}}</style>
+                <div class="tg-wrap">
+                    <br>
+                    <table class="tg">
+                        <tr>
+                            <td class="tg-amwm"><br>Colaboradores</td>
+                            <td class="tg-yw4l">
+                                <a href="incluirPesquisador.jsp">Incluir Pesquisador</a><br>
+                                <a href="incluirProfessor.jsp">Incluir Professor</a><br>
+                                <a href="incluirAlunoGraduacao.jsp">Incluir aluno de graduação</a><br>
+                                <a href="incluirAlunoPosGraduacao.jsp">Incluir aluno de pós-graduação</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tg-0vih"><br>Projeto</td>
+                            <td class="tg-b7b8">
+                                <a href="incluirProjeto.jsp">Incluir Projeto</a><br>
+                                <a href="incluirColaboradoresProjeto.jsp">Incluir colaboradores a um projeto</a><br>
+                                <a href="mudarStatusProjetoParaEmAndamento.jsp">Mudar situação de um projeto para Em Andamento</a><br/>
+                                <a href="mudarStatusProjetoParaConcluido.jsp">Mudar situação de um projeto para Concluido</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tg-amwm"><br>Produção acadêmica</td>
+                            <td class="tg-yw4l">
+                                <a href="incluirOrientacao.jsp">Incluir orientação</a><br>
+                                <a href="incluirPublicacao.jsp">Incluir publicação</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tg-0vih"><br>Relatórios</td>
+                            <td class="tg-b7b8">
+                                <a href="consultaColaborador.jsp" class="gwd-a-5lnt">Consulta por colaborador</a><br>
+                                <a href="consultaProjeto.jsp" class="gwd-a-5lnt">Consulta por projeto</a><br>
+                                <a href="relatorioProducaoAcademica.jsp" class="gwd-a-5lnt">Relatório de produção acadêmica</a><br/>
+                                <a href="Controller?memoria=all" class="gwd-a-5lnt">Exibir memória</a>
+                            </td>
+                        </tr>
+                    </table>
+                    <br><br>
+                </div>
+                <div class="submit">
+                    <h3>Rafael Pereira de Oliveira - Mat. 1512356</h3>
+                </div>
+        </form>
+        <script type="text/javascript" src="scripts/formoid-metro-cyan.js" charset="UTF-8"></script>
     </body>
-
 </html>
