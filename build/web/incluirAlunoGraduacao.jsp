@@ -21,10 +21,8 @@
             <div class="element-date"><label class="title">Data de ingresso<span class="required">*</span></label><input class="small" data-format="yyyy-mm-dd" type="date" name="dataIngresso" required="required" placeholder="yyyy-mm-dd"/></div>
 
             <jsp:include page="helpers/boxProfessor.jsp" />
+            <jsp:include page="helpers/submit.jsp"/>
 
-            <div class="submit">
-                <a href="index.html">Voltar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Incluir"/></div>
             <input type="hidden" name="command" value="incluirAlunoGraduacao">
         </form>
         <script type="text/javascript" src="scripts/formoid-metro-cyan.js" charset="UTF-8"></script>

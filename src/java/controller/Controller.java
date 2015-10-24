@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -19,6 +20,7 @@ import model.Orientacao;
 import model.Pesquisador;
 import model.Professor;
 import model.Projeto;
+import model.Publicacao;
 
 /**
  *
@@ -138,12 +140,26 @@ public class Controller extends HttpServlet {
     }
 
     public void incluirColaboradoresProjeto() {
+        ArrayList<Integer> colSelecionados = new ArrayList<>();
+        if (this.request.getParameterValues("colaborador") != null) {
+            for (String col : this.request.getParameterValues("colaborador")) {
+                colSelecionados.add(Integer.valueOf(col));
+            }
+        }
+        ArrayList<Integer> profSelecionados = new ArrayList<>();
+        for (String col : this.request.getParameterValues("professores")) {
+            profSelecionados.add(Integer.valueOf(col));
+        }
         for (Object proj : mem.getAll()) {
             if ((proj instanceof Projeto) && (((Projeto) proj).getTitulo().equals(this.request.getParameter("projeto")))) {
                 for (Object col : mem.getAll()) {
-                    if ((col instanceof Colaborador) && (((Colaborador) col).getId() == Integer.valueOf(this.request.getParameter("colaborador")))) {
+                    if ((col instanceof Colaborador) && (colSelecionados.contains(((Colaborador) col).getId()))) {
                         if (!((Projeto) proj).colaboradores.contains((Colaborador) col)) {
                             ((Projeto) proj).colaboradores.add((Colaborador) col);
+                        }
+                    } else if ((col instanceof Professor) && (profSelecionados.contains(((Professor) col).getId()))) {
+                        if (!((Projeto) proj).professores.contains((Professor) col)) {
+                            ((Projeto) proj).professores.add((Professor) col);
                         }
                     }
                 }
@@ -176,6 +192,56 @@ public class Controller extends HttpServlet {
             }
         }
         return null;
+    }
+
+    private Projeto getProjeto(String parameter) {
+        for (Object obj : mem.getAll()) {
+            if ((obj instanceof Projeto) && (((Projeto) obj).getTitulo().equals(parameter))) {
+                return (Projeto) obj;
+            }
+        }
+        return null;
+    }
+
+    public void incluirPublicacao() {
+        Publicacao publicacao = new Publicacao(
+                this.request.getParameter("titulo"),
+                this.request.getParameter("conferencia"),
+                Integer.valueOf(this.request.getParameter("anoPublicacao")),
+                this.getProjeto(this.request.getParameter("projeto"))
+        );
+
+        ArrayList<Integer> colSelecionados = new ArrayList<>();
+        if (this.request.getParameterValues("colaborador") != null) {
+            for (String col : this.request.getParameterValues("colaborador")) {
+                colSelecionados.add(Integer.valueOf(col));
+            }
+        }
+        for (Object col : mem.getAll()) {
+            if ((col instanceof Colaborador) && (colSelecionados.contains(((Colaborador) col).getId()))) {
+                if (!publicacao.colaboradores.contains(((Colaborador) col))) {
+                    publicacao.colaboradores.add(((Colaborador) col));
+                }
+            }
+        }
+        for (Object col : mem.getAll()) {
+            if ((col instanceof Projeto) && (((Projeto) col).getTitulo().equals(this.request.getParameter("projeto")))) {
+                if (!((Projeto) col).publicacoes.contains(publicacao)) {
+                    ((Projeto) col).publicacoes.add(publicacao);
+                }
+            }
+        }
+        mem.add(publicacao);
+        this.param = "?status=1";
+    }
+
+    public void alterarStatusProjeto() {
+        for (Object obj : mem.getAll()) {
+            if ((obj instanceof Projeto) && (((Projeto) obj).getTitulo().equals(this.request.getParameter("projeto")))) {
+                ((Projeto) obj).mudarSituacao();
+            }
+        }
+        this.param = "?status=1";
     }
 
 }

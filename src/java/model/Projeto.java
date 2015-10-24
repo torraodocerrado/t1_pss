@@ -23,6 +23,8 @@ public class Projeto {
     private Date dataInicio;
     private Date dataFim;
     public ArrayList<Colaborador> colaboradores;
+    public ArrayList<Publicacao> publicacoes;
+    public ArrayList<Professor> professores;
 
     public Date getDataInicio() {
         return dataInicio;
@@ -97,6 +99,8 @@ public class Projeto {
         this.dataInicio = dataInicio;
         this.situacao = "Em elaboração";
         this.colaboradores = new ArrayList<>();
+        this.professores = new ArrayList<>();
+        this.publicacoes = new ArrayList<>();
     }
 
     @Override
@@ -107,14 +111,63 @@ public class Projeto {
         result += "<li><b>Valor Financiado: </b>" + getValorFinanciado() + "<br></li>";
         result += "<li><b>Agência Financiadora: </b>" + getAgenciaFinanciadora() + "<br></li>";
         result += "<li><b>Objetivo: </b>" + getObjetivo() + "<br></li>";
+        result += "<li><b>Descrição: </b>" + getDescricao() + "<br></li>";
         result += "<li><b>Situação: </b>" + getSituacao() + "<br></li>";
         result += "<li><b>Data Início: </b>" + getDataInicio() + "<br></li>";
         if (this.getDataFim() != null) {
             result += "<li><b>Data Fim: </b>" + getDataFim() + "<br></li>";
+        }
+        for (Professor professor : professores) {
+            result += "<li>" + professor.toString() + "<br></li>";
         }
         for (Colaborador colaborador : colaboradores) {
             result += "<li><b>Colaborador: </b><br> " + colaborador.toString() + "<br></li>";
         }
         return result + "</ul>";
     }
+
+    public String getTituloMudancaSituacao() {
+        switch (this.getSituacao()) {
+            case "Em elaboração":
+                return this.getTitulo() + " - " + this.getSituacao() + " ==> " + " em andamento";
+            case "Em andamento":
+                return this.getTitulo() + " - " + this.getSituacao() + " ==> " + "Concluído";
+            default:
+                return this.getTitulo() + " - Projeto já foi concluído";
+        }
+    }
+
+    public void mudarSituacao() {
+        switch (this.getSituacao()) {
+            case "Em elaboração":
+                this.setSituacao("Em andamento");
+                break;
+            case "Em andamento":
+                this.setSituacao("Concluído");
+                this.setDataFim(new Date());
+                break;
+        }
+    }
+
+    public boolean validoMudancaStatus() {
+        switch (this.getSituacao()) {
+            case "Em elaboração":
+                return this.professores.size() > 0
+                        && !this.getTitulo().isEmpty()
+                        && !this.getAgenciaFinanciadora().isEmpty()
+                        && !this.getDescricao().isEmpty()
+                        && !this.getObjetivo().isEmpty()
+                        && this.getDataInicio() != null;
+            case "Em andamento":
+                return this.professores.size() > 0
+                        && this.publicacoes.size() > 0
+                        && !this.getTitulo().isEmpty()
+                        && !this.getAgenciaFinanciadora().isEmpty()
+                        && !this.getDescricao().isEmpty()
+                        && !this.getObjetivo().isEmpty()
+                        && this.getDataInicio() != null;
+        }
+        return false;
+    }
+
 }

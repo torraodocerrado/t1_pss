@@ -12,9 +12,12 @@
         <form class="formoid-metro-cyan" style="background-color:#FFFFFF;font-size:14px;font-family:'Trebuchet MS',Helvetica,sans-serif;color:#666666;max-width:800px;min-width:150px" method="post"><div class="title"><h2>Pesquisa por Projeto</h2></div>
             <div class="element-input"><label class="title">Código do projeto<span class="required">*</span></label><input class="small" type="text" name="input1" required="required"/></div>
             <div class="submit">
-                <a href="index.html">Voltar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Pesquisar"/></div></form><p class="frmd">
-            <script type="text/javascript" src="scripts/formoid-metro-cyan.js" charset="UTF-8"></script>
+
+                <input type="submit" value="Pesquisar"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="index.html">Voltar</a>
+            </div>
+        </form>
+        <script type="text/javascript" src="scripts/formoid-metro-cyan.js" charset="UTF-8"></script>
     </body>
 </html>
 

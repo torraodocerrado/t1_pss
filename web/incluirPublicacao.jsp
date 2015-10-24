@@ -10,27 +10,24 @@
         <link rel="stylesheet" href="scripts/formoid-metro-cyan.css" type="text/css" />
         <script type="text/javascript" src="scripts/jquery.min.js"></script>
 
-        <jsp:include page="helpers/msgSalvo.jsp.jsp"/>
+        <jsp:include page="helpers/msgSalvo.jsp"/>
 
-        <form class="formoid-metro-cyan" style="background-color:#FFFFFF;font-size:14px;font-family:'Trebuchet MS',Helvetica,sans-serif;color:#666666;max-width:800px;min-width:150px" method="post"><div class="title"><h2>Incluir publicação</h2></div>
-            <div class="element-input"><label class="title">Título<span class="required">*</span></label><input class="large" type="text" name="input" required="required"/></div>
-            <div class="element-input"><label class="title">Conferência<span class="required">*</span></label><input class="large" type="text" name="input1" required="required"/></div>
-            <div class="element-number"><label class="title">Ano publicação</label><input class="small" type="text" min="1900" max="2015" name="number"  value=""/></div>
+        <form action="Controller" class="formoid-metro-cyan" style="background-color:#FFFFFF;font-size:14px;font-family:'Trebuchet MS',Helvetica,sans-serif;color:#666666;max-width:800px;min-width:150px" method="post"><div class="title"><h2>Incluir publicação</h2></div>
+            <div class="element-input"><label class="title">Título<span class="required">*</span></label><input class="large" type="text" name="titulo" required="required"/></div>
+            <div class="element-input"><label class="title">Conferência<span class="required">*</span></label><input class="large" type="text" name="conferencia" required="required"/></div>
+            <div class="element-number"><label class="title">Ano publicação</label><input class="small" type="number" min="1900" max="2015" name="anoPublicacao"  value=""/></div>
 
-            <jsp:include page="helpers/msgSalvo.jsp.jsp"/>
+            <jsp:include page="helpers/boxProjetoEmAndamento.jsp"/>
 
-            <div class="element-multiple"><label class="title">Selecione um ou mais colaboradores<span class="required">*</span></label>
-                <div class="large">
-                    <select data-no-selected="Nothing selected" name="multiple[]" multiple="multiple" required="required">
+            <jsp:include page="helpers/boxListaProfessor.jsp"/>
 
-                        <option value="option 1">option 1</option>
-                        <option value="option 2">option 2</option>
-                        <option value="option 3">option 3</option></select>
-                </div>
-            </div>
-            <div class="submit">
-                <a href="index.html">Voltar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Incluir"/></div></form>
+            <jsp:include page="helpers/boxListaColaboradoresSemProfessores.jsp"/>
+
+            <jsp:include page="helpers/submit.jsp"/>
+
+            <input type="hidden" name="command" value="incluirPublicacao">
+
+        </form>
         <script type="text/javascript" src="scripts/formoid-metro-cyan.js" charset="UTF-8"></script>
     </body>
 </html>

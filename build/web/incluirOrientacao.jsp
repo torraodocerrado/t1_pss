@@ -30,9 +30,8 @@
             <jsp:include page="helpers/boxProfessor.jsp"/>
             <jsp:include page="helpers/boxAluno.jsp"/>
 
-            <div class="submit">
-                <a href="index.html">Voltar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Incluir"/></div>
+            <jsp:include page="helpers/submit.jsp"/>
+
             <input type="hidden" name="command" value="incluirOrientacao">
         </form>
         <script type="text/javascript" src="scripts/formoid-metro-cyan.js" charset="UTF-8"></script>

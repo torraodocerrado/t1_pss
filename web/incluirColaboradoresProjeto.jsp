@@ -16,14 +16,13 @@
 
         <form action="Controller" class="formoid-metro-cyan" style="background-color:#FFFFFF;font-size:14px;font-family:'Trebuchet MS',Helvetica,sans-serif;color:#666666;max-width:800px;min-width:150px" method="post"><div class="title"><h2>Incluir colaboradores a um projeto</h2></div>
 
-            <jsp:include page="helpers/boxProjeto.jsp" />
-            <jsp:include page="helpers/boxColaborador.jsp" />
+            <jsp:include page="helpers/boxProjetoEmElaboracao.jsp" />
+            <jsp:include page="helpers/boxListaProfessor.jsp" />
+            <jsp:include page="helpers/boxListaColaboradoresSemProfessores.jsp" />
 
-            <div class="submit">
-                <a href="index.html">Voltar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Incluir"/></div>
+            <jsp:include page="helpers/submit.jsp"/>
             <input type="hidden" name="command" value="incluirColaboradoresProjeto">
         </form>
-        <script type="text/javascript" src="scripts/formoid-metro-cyan.js"></script>
+        <script type="text/javascript" src="scripts/formoid-metro-cyan.js" charset="UTF-8"></script>
     </body>
 </html>
