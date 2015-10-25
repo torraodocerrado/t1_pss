@@ -9,7 +9,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Aluno;
@@ -27,12 +26,7 @@ import model.Publicacao;
  * @author Rafael
  */
 @WebServlet(name = "Controller", urlPatterns = {"/Controller"})
-public class Controller extends HttpServlet {
-
-    private Memoria mem;
-    private HttpServletRequest request;
-    private String output = "";
-    private String param = "";
+public class Controller extends Base {
 
     public Controller() {
         if (mem == null) {
@@ -194,21 +188,11 @@ public class Controller extends HttpServlet {
         return null;
     }
 
-    private Projeto getProjeto(String parameter) {
-        for (Object obj : mem.getAll()) {
-            if ((obj instanceof Projeto) && (((Projeto) obj).getTitulo().equals(parameter))) {
-                return (Projeto) obj;
-            }
-        }
-        return null;
-    }
-
     public void incluirPublicacao() {
         Publicacao publicacao = new Publicacao(
                 this.request.getParameter("titulo"),
                 this.request.getParameter("conferencia"),
-                Integer.valueOf(this.request.getParameter("anoPublicacao")),
-                this.getProjeto(this.request.getParameter("projeto"))
+                Integer.valueOf(this.request.getParameter("anoPublicacao"))
         );
 
         ArrayList<Integer> colSelecionados = new ArrayList<>();

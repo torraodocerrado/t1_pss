@@ -17,9 +17,9 @@
             <div class="element-input"><label class="title">Conferência<span class="required">*</span></label><input class="large" type="text" name="conferencia" required="required"/></div>
             <div class="element-number"><label class="title">Ano publicação</label><input class="small" type="number" min="1900" max="2015" name="anoPublicacao"  value=""/></div>
 
-            <jsp:include page="helpers/boxProjetoEmAndamento.jsp"/>
-
             <jsp:include page="helpers/boxListaProfessor.jsp"/>
+
+            <jsp:include page="helpers/boxProjetoEmAndamento.jsp"/>
 
             <jsp:include page="helpers/boxListaColaboradoresSemProfessores.jsp"/>
 

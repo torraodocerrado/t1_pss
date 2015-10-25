@@ -104,4 +104,12 @@ public class Memoria {
         return result;
     }
 
+    public Projeto getProjeto(String parameter) {
+        for (Object obj : this.getAll()) {
+            if ((obj instanceof Projeto) && (((Projeto) obj).getTitulo().equals(parameter))) {
+                return (Projeto) obj;
+            }
+        }
+        return null;
+    }
 }

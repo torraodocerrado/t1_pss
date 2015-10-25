@@ -26,6 +26,14 @@ public class Projeto {
     public ArrayList<Publicacao> publicacoes;
     public ArrayList<Professor> professores;
 
+    public ArrayList<Publicacao> getPublicacoes() {
+        return publicacoes;
+    }
+
+    public void addPublicacao(Publicacao publicacao) {
+        this.publicacoes.add(publicacao);
+    }
+
     public Date getDataInicio() {
         return dataInicio;
     }
@@ -123,6 +131,9 @@ public class Projeto {
         for (Colaborador colaborador : colaboradores) {
             result += "<li><b>Colaborador: </b><br> " + colaborador.toString() + "<br></li>";
         }
+        for (Publicacao publicacao : this.getPublicacoesOrdenadasData()) {
+            result += "<li> " + publicacao.toString() + "<br></li>";
+        }
         return result + "</ul>";
     }
 
@@ -156,6 +167,11 @@ public class Projeto {
                         && this.getDataInicio() != null;
         }
         return false;
+    }
+
+    private ArrayList<Publicacao> getPublicacoesOrdenadasData() {
+        publicacoes.sort((Object o1, Object o2) -> ((Publicacao) o2).getAnoPublicacao() - ((Publicacao) o1).getAnoPublicacao());
+        return publicacoes;
     }
 
 }
