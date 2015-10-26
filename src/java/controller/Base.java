@@ -1,12 +1,22 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Aluno;
+import model.AlunoGraduacao;
+import model.Colaborador;
+import model.Professor;
+import model.Projeto;
 
 /**
  *
@@ -17,6 +27,7 @@ public class Base extends HttpServlet {
 
     protected Memoria mem;
     protected HttpServletRequest request;
+    HttpServletResponse response;
     protected String output = "";
     protected String param = "";
 
@@ -31,18 +42,21 @@ public class Base extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Base</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Base at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        this.request = request;
+        this.response = response;
+        this.output = "";
+        this.param = "";
+        this.response.setContentType("text/html;charset=UTF-8");
+        if (this.request.getParameterMap().containsKey("memoria")) {
+            this.response.sendRedirect("memoria.jsp?memoria=" + this.request.getParameter("memoria"));
+        } else if (this.request != null && this.request.getParameterMap().containsKey("cmd") && !this.request.getParameter("cmd").isEmpty()) {
+            try {
+                Method method = this.getClass().getMethod(this.request.getParameter("cmd"));
+                method.invoke(this);
+                this.request.getRequestDispatcher(this.request.getParameter("cmd") + ".jsp" + param).forward(this.request, this.response);
+            } catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
+                Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 
@@ -85,4 +99,91 @@ public class Base extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    public Base() {
+        if (mem == null) {
+            mem = new Memoria();
+        }
+    }
+
+    public Professor getProfessor(int id) {
+        for (Object obj : mem.getAll()) {
+            if ((obj instanceof Professor) && (((Professor) obj).getId() == id)) {
+                return (Professor) obj;
+            }
+        }
+        return null;
+    }
+
+    public Aluno getAluno(int id) {
+        for (Object ojb : mem.getAll()) {
+            if ((ojb instanceof Aluno) && (((Aluno) ojb).getId() == id)) {
+                return (Aluno) ojb;
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<Object> getParticipantesProjeto() {
+        ArrayList<Object> temp = new ArrayList<>();
+        for (Object mem : mem.getAll()) {
+            if ((mem instanceof Colaborador) && (!(mem instanceof Professor))) {
+                if (!(mem instanceof AlunoGraduacao) || (this.getNumeroProjetosAndamentoAlunoParticipa((AlunoGraduacao) mem) < 2)) {
+                    temp.add(mem);
+                }
+            }
+        }
+        return temp;
+    }
+
+    public int getNumeroProjetosAndamentoAlunoParticipa(AlunoGraduacao aluno) {
+        int num = 0;
+        for (Projeto mem : this.getProjetosEmAndamento()) {
+            if (mem.colaboradores.contains(aluno)) {
+                num++;
+            }
+        }
+        return num;
+    }
+
+    public ArrayList<Projeto> getProjetosEmElaboracao() {
+        ArrayList<Projeto> result = new ArrayList<>();
+        for (Object memItem : mem.getAll()) {
+            if ((memItem instanceof Projeto) && ((Projeto) memItem).getSituacao().equals("Em elaboração")) {
+                result.add((Projeto) memItem);
+            }
+        }
+        return result;
+    }
+
+    public ArrayList<Projeto> getProjetosEmAndamento() {
+        ArrayList<Projeto> result = new ArrayList<>();
+        for (Object memItem : mem.getAll()) {
+            if ((memItem instanceof Projeto) && ((Projeto) memItem).getSituacao().equals("Em andamento")) {
+                result.add((Projeto) memItem);
+            }
+        }
+        return result;
+    }
+
+    public Projeto getProjeto(String parameter) {
+        for (Object memItem : mem.getAll()) {
+            if ((memItem instanceof Projeto) && (((Projeto) memItem).getTitulo().equals(parameter))) {
+                return (Projeto) memItem;
+            }
+        }
+        return null;
+    }
+
+    protected void debugParameters() {
+        Enumeration<String> parameterNames = request.getParameterNames();
+        while (parameterNames.hasMoreElements()) {
+            String paramName = parameterNames.nextElement();
+            System.out.println(paramName);
+            String[] paramValues = request.getParameterValues(paramName);
+            for (int i = 0; i < paramValues.length; i++) {
+                System.out.println(paramValues[i]);
+
+            }
+        }
+    }
 }

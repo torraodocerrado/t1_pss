@@ -25,7 +25,7 @@
 
             <jsp:include page="helpers/submit.jsp"/>
 
-            <input type="hidden" name="command" value="incluirPublicacao">
+            <input type="hidden" name="cmd" value="incluirPublicacao">
 
         </form>
         <script type="text/javascript" src="scripts/formoid-metro-cyan.js" charset="UTF-8"></script>

@@ -15,7 +15,7 @@
 
             <jsp:include page="helpers/pesquisar.jsp"/>
 
-            <input type="hidden" value="consultaColaborador" name="command">
+            <input type="hidden" value="consultaColaborador" name="cmd">
         </form>
         <script type="text/javascript" src="scripts/formoid-metro-cyan.js" charset="UTF-8"></script>
     </body>

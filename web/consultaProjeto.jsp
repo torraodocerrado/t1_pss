@@ -18,7 +18,7 @@
         <form class="formoid-metro-cyan" style="background-color:#FFFFFF;font-size:14px;font-family:'Trebuchet MS',Helvetica,sans-serif;color:#666666;max-width:800px;min-width:150px" method="post"><div class="title"><h2>Pesquisa por Projeto</h2></div>
             <jsp:include page="helpers/boxProjeto.jsp" />
             <jsp:include page="helpers/pesquisar.jsp" />
-            <input type="hidden" name="command" value="consultaProjeto">
+            <input type="hidden" name="cmd" value="consultaProjeto">
             <table class="tg">
                 <% if (request.getParameter("projeto") != null) {
                         Memoria memoria = new Memoria();

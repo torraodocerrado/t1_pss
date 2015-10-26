@@ -34,7 +34,7 @@
 
             <jsp:include page="helpers/submit.jsp"/>
 
-            <input type="hidden" name="command" value="mudarStatusProjetoParaConcluido">
+            <input type="hidden" name="cmd" value="mudarStatusProjetoParaConcluido">
         </form>
         <script type="text/javascript" src="scripts/formoid-metro-cyan.js" charset="UTF-8"></script>
 
