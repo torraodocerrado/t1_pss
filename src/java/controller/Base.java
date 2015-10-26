@@ -1,5 +1,6 @@
 package controller;
 
+import memoria.Memoria;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -55,7 +56,7 @@ public class Base extends HttpServlet {
                 method.invoke(this);
                 this.request.getRequestDispatcher(this.request.getParameter("cmd") + ".jsp" + param).forward(this.request, this.response);
             } catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
-                Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Base.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }

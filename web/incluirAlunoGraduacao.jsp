@@ -1,4 +1,3 @@
-<%@page import="controller.Memoria"%>
 <%@page import="model.Professor"%>
 <!DOCTYPE html>
 <html>

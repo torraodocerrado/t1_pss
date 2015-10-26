@@ -13,7 +13,7 @@
         </style>
     </head>
     <body>
-        <%@ page import="controller.Memoria"%>
+        <%@ page import="memoria.Memoria"%>
         <table border='1'>
             <% Memoria memoria = new Memoria();
                 String type = "";

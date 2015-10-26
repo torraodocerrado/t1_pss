@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Rafael
@@ -9,11 +11,15 @@ public class Colaborador {
     private int id;
     private String nome;
     private String email;
+    public ArrayList<ProducaoAcademica> producoes;
+    public ArrayList<Projeto> projetos;
 
     public Colaborador(int id, String nome, String email) {
         this.id = id;
         this.nome = nome;
         this.email = email;
+        this.producoes = new ArrayList<>();
+        this.projetos = new ArrayList<>();
     }
 
     public int getId() {

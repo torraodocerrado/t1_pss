@@ -1,83 +1,40 @@
 package controller;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import model.Colaborador;
+import model.Projeto;
+import model.RelatorioColaborador;
 
 /**
  *
  * @author Rafael
  */
 @WebServlet(name = "ControllerRelatorio", urlPatterns = {"/ControllerRelatorio"})
-public class ControllerRelatorio extends HttpServlet {
+public class ControllerRelatorio extends Base {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ControllerRelatorio</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ControllerRelatorio at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+    public void consultaProjeto() {
+        if (this.request.getParameter("projeto") != null) {
+            this.request.setAttribute("relProjeto", this.getProjeto(this.request.getParameter("projeto")));
         }
+        this.request.setAttribute("listaProjetos", mem.getAll(Projeto.class));
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+    public void consultaColaborador() {
+        if (this.request.getParameter("colaborador") != null) {
+            this.request.setAttribute("relColaborador", this.getColaborador(Integer.valueOf(this.request.getParameter("colaborador"))));
+        }
+        this.request.setAttribute("listaColaboradores", mem.getAll(Colaborador.class));
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+    private RelatorioColaborador getColaborador(int id) {
+        RelatorioColaborador relColaborador = null;
+        Colaborador colaborador = null;
+        for (Object col : mem.getAll(Colaborador.class)) {
+            if (((Colaborador) col).getId() == id) {
+                colaborador = (Colaborador) col;
+                relColaborador = new RelatorioColaborador(colaborador);
+            }
+        }
+        return relColaborador;
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
 }

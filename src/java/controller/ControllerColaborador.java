@@ -25,9 +25,6 @@ public class ControllerColaborador extends Base {
     }
 
     public void incluirAlunoGraduacao() {
-        if (this.request.getParameter("listaProfessores") == null) {
-            this.request.setAttribute("listaProfessores", mem.getAll(Professor.class));
-        }
         if (this.request.getParameter("id") != null) {
             AlunoGraduacao aluno = new AlunoGraduacao(
                     Integer.valueOf(this.request.getParameter("id")),
@@ -39,12 +36,10 @@ public class ControllerColaborador extends Base {
             mem.add(aluno);
             this.param = "?status=1";
         }
+        this.request.setAttribute("listaProfessores", mem.getAll(Professor.class));
     }
 
     public void incluirAlunoPosGraduacao() {
-        if (this.request.getParameter("listaProfessores") == null) {
-            this.request.setAttribute("listaProfessores", mem.getAll(Professor.class));
-        }
         if (this.request.getParameter("id") != null) {
             AlunoPosGraduacao aluno = new AlunoPosGraduacao(
                     Integer.valueOf(this.request.getParameter("id")),
@@ -58,6 +53,7 @@ public class ControllerColaborador extends Base {
             mem.add(aluno);
             this.param = "?status=1";
         }
+        this.request.setAttribute("listaProfessores", mem.getAll(Professor.class));
     }
 
     public void incluirProfessor() {
@@ -83,4 +79,5 @@ public class ControllerColaborador extends Base {
             this.param = "?status=1";
         }
     }
+
 }

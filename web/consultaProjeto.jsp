@@ -1,4 +1,4 @@
-<%@page import="controller.Memoria"%>
+<%@page import="model.Projeto"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,18 +15,17 @@
     <body class="blurBg-false" style="background-color:#EBEBEB">
         <link rel="stylesheet" href="scripts/formoid-metro-cyan.css" type="text/css" />
         <script type="text/javascript" src="scripts/jquery.min.js"></script>
-        <form class="formoid-metro-cyan" style="background-color:#FFFFFF;font-size:14px;font-family:'Trebuchet MS',Helvetica,sans-serif;color:#666666;max-width:800px;min-width:150px" method="post"><div class="title"><h2>Pesquisa por Projeto</h2></div>
+        <form action="ControllerRelatorio?cmd=consultaProjeto" class="formoid-metro-cyan" style="background-color:#FFFFFF;font-size:14px;font-family:'Trebuchet MS',Helvetica,sans-serif;color:#666666;max-width:800px;min-width:150px" method="post"><div class="title"><h2>Pesquisa por Projeto</h2></div>
             <jsp:include page="helpers/boxProjeto.jsp" />
             <jsp:include page="helpers/pesquisar.jsp" />
             <input type="hidden" name="cmd" value="consultaProjeto">
             <table class="tg">
-                <% if (request.getParameter("projeto") != null) {
-                        Memoria memoria = new Memoria();
+                <% if (request.getAttribute("relProjeto") != null) {
+                        Projeto projeto = (Projeto) request.getAttribute("relProjeto");
                 %>
-
                 <tr>
                     <td class="tg-yw4l">
-                        <%=memoria.getProjeto(request.getParameter("projeto")).toString()%>
+                        <%=projeto.toString()%>
                     </td>
                 </tr>
 

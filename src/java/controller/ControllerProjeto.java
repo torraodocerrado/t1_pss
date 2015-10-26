@@ -40,12 +40,6 @@ public class ControllerProjeto extends Base {
     }
 
     public void incluirColaboradoresProjeto() {
-        if (this.request.getParameter("listaProjetosElaboracao") == null) {
-            this.request.setAttribute("listaProjetosElaboracao", this.getProjetosEmElaboracao());
-        }
-        if (this.request.getParameter("listaParticipantesProjeto") == null) {
-            this.request.setAttribute("listaParticipantesProjeto", this.getParticipantesProjeto());
-        }
         if (this.request.getParameter("projeto") != null) {
             ArrayList<Integer> colSelecionados = new ArrayList<>();
             if (this.request.getParameterValues("colaborador") != null) {
@@ -69,33 +63,43 @@ public class ControllerProjeto extends Base {
                                 ((Projeto) proj).professores.add((Professor) col);
                             }
                         }
+                        ((Colaborador) col).projetos.add((Projeto) proj);
                     }
                 }
             }
             this.param = "?status=1";
         }
+        this.request.setAttribute("listaProfessores", mem.getAll(Professor.class));
+        this.request.setAttribute("listaProjetosElaboracao", this.getProjetosEmElaboracao());
+        this.request.setAttribute("listaParticipantesProjeto", this.getParticipantesProjeto());
     }
 
     public void mudarStatusProjetoParaEmAndamento() {
-        for (Object obj : mem.getAll()) {
-            if ((obj instanceof Projeto) && (((Projeto) obj).getTitulo().equals(this.request.getParameter("projeto")))) {
-                ((Projeto) obj).setSituacao("Em andamento");
+        if (this.request.getParameter("projeto") != null) {
+            for (Object obj : mem.getAll()) {
+                if ((obj instanceof Projeto) && (((Projeto) obj).getTitulo().equals(this.request.getParameter("projeto")))) {
+                    ((Projeto) obj).setSituacao("Em andamento");
+                }
             }
+            this.param = "?status=1";
         }
-        this.param = "?status=1";
+        this.request.setAttribute("listaProjetosMudancaSituacaoEmAndamento", this.getProjetoMudancaSituacaoEmAndamento());
     }
 
     public void mudarStatusProjetoParaConcluido() {
-        for (Object obj : mem.getAll()) {
-            if ((obj instanceof Projeto) && (((Projeto) obj).getTitulo().equals(this.request.getParameter("projeto")))) {
-                ((Projeto) obj).setSituacao("Concluído");
-                ((Projeto) obj).setDataFim(Date.valueOf(this.request.getParameter("dataFim")));
+        if (this.request.getParameter("projeto") != null) {
+            for (Object obj : mem.getAll()) {
+                if ((obj instanceof Projeto) && (((Projeto) obj).getTitulo().equals(this.request.getParameter("projeto")))) {
+                    ((Projeto) obj).setSituacao("Concluído");
+                    ((Projeto) obj).setDataFim(Date.valueOf(this.request.getParameter("dataFim")));
+                }
             }
+            this.param = "?status=1";
         }
-        this.param = "?status=1";
+        this.request.setAttribute("listaProjetosMudancaSituacaoConcluido", this.getProjetoMudancaSituacaoConcluido());
     }
 
-    public ArrayList<Projeto> getProjetoMudancaSituacaoConcluido() {
+    private ArrayList<Projeto> getProjetoMudancaSituacaoConcluido() {
         ArrayList<Projeto> result = new ArrayList<>();
         result.addAll(this.getProjetosEmAndamento());
         result = this.validaProjetosMudancaSituacao(result);
@@ -112,7 +116,7 @@ public class ControllerProjeto extends Base {
         return result;
     }
 
-    public ArrayList<Projeto> getProjetoMudancaSituacaoEmAndamento() {
+    private ArrayList<Projeto> getProjetoMudancaSituacaoEmAndamento() {
         ArrayList<Projeto> result = new ArrayList<>();
         result.addAll(this.getProjetosEmElaboracao());
         result = this.validaProjetosMudancaSituacao(result);

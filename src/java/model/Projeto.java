@@ -144,7 +144,7 @@ public class Projeto {
             case "Em andamento":
                 return this.getTitulo() + " - " + this.getSituacao() + " ==> " + "Concluído";
             default:
-                return this.getTitulo() + " - Projeto já foi concluído";
+                return "";
         }
     }
 
@@ -170,8 +170,8 @@ public class Projeto {
     }
 
     private ArrayList<Publicacao> getPublicacoesOrdenadasData() {
-        publicacoes.sort((Object o1, Object o2) -> ((Publicacao) o2).getAnoPublicacao() - ((Publicacao) o1).getAnoPublicacao());
-        return publicacoes;
+        this.publicacoes.sort((Object o1, Object o2) -> ((Publicacao) o2).getAnoPublicacao() - ((Publicacao) o1).getAnoPublicacao());
+        return this.publicacoes;
     }
 
 }

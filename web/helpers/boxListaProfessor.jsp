@@ -1,6 +1,5 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.Professor"%>
-<%@page import="controller.Memoria"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% ArrayList<Object> professores = (ArrayList<Object>) request.getAttribute("listaProfessores");%>
 <div class="element-multiple">

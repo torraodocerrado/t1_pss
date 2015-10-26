@@ -6,20 +6,11 @@ import java.util.ArrayList;
  *
  * @author Rafael
  */
-public class Publicacao {
+public class Publicacao extends ProducaoAcademica {
 
-    private String titulo;
     private String conferencia;
     private int anoPublicacao;
     public ArrayList<Colaborador> colaboradores;
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
 
     public String getConferencia() {
         return conferencia;
@@ -38,7 +29,7 @@ public class Publicacao {
     }
 
     public Publicacao(String titulo, String conferencia, int anoPublicacao) {
-        this.titulo = titulo;
+        super(titulo);
         this.conferencia = conferencia;
         this.anoPublicacao = anoPublicacao;
         this.colaboradores = new ArrayList<>();

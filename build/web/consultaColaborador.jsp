@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="model.Colaborador"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,9 +11,37 @@
 
         <link rel="stylesheet" href="scripts/formoid-metro-cyan.css" type="text/css" />
         <script type="text/javascript" src="scripts/jquery.min.js"></script>
-        <form action="Controller" class="formoid-metro-cyan" style="background-color:#FFFFFF;font-size:14px;font-family:'Trebuchet MS',Helvetica,sans-serif;color:#666666;max-width:800px;min-width:150px" method="post">
+        <form action="ControllerRelatorio?cmd=consultaColaborador" class="formoid-metro-cyan" style="background-color:#FFFFFF;font-size:14px;font-family:'Trebuchet MS',Helvetica,sans-serif;color:#666666;max-width:800px;min-width:150px" method="post">
             <div class="title"><h2>Consultar Colaborador</h2></div>
-            <div class="element-input"><label class="title">Código do colaborador<span class="required">*</span></label><input class="small" type="text" name="input1" required="required"/></div>
+
+
+            <%@page contentType="text/html" pageEncoding="UTF-8"%>
+            <div class="element-select"><label class="title">Selecione um ou mais colaboradores<span class="required">*</span></label>
+                <div class="large">
+                    <select name="colaborador" required="required">
+                        <option value=""></option>
+                        <%
+                            ArrayList<Object> pessoas = (ArrayList<Object>) request.getAttribute("listaColaboradores");
+                            for (Object mem : pessoas) {
+                        %>
+                        <option value="<%=((Colaborador) mem).getId()%>"><%=((Colaborador) mem).getId() + "-" + ((Colaborador) mem).getNome()%></option>
+                        <%}%>
+                    </select>
+                </div>
+                <br><br>
+                <table class="tg">
+                    <% if (request.getAttribute("relColaborador") != null) {
+                            Object colaborador = (Object) request.getAttribute("relColaborador");
+                    %>
+                    <tr>
+                        <td class="tg-yw4l">
+                            <%=colaborador.toString()%>
+                        </td>
+                    </tr>
+                    <% }%>
+                </table>
+
+            </div>
 
             <jsp:include page="helpers/pesquisar.jsp"/>
 

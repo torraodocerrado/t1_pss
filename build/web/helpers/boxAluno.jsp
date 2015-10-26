@@ -1,12 +1,12 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="model.Aluno"%>
-<%@page import="controller.Memoria"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%Memoria memoria = new Memoria();%>
-<div class="element-select"><label class="title">Aluno</label>
+<div class="element-select"><label class="title">Aluno<span class="required">*</span></label>
     <div class="large">
         <span>
-            <select name="aluno" >
-                <% for (Object mem : memoria.getAll(Aluno.class)) {%>
+            <select name="aluno" required="required">
+                <% ArrayList<Object> alunos = (ArrayList<Object>) request.getAttribute("listaAlunos");
+                    for (Object mem : alunos) {%>
                 <option value="<%=((Aluno) mem).getId()%>"><%=((Aluno) mem).getId() + " - " + ((Aluno) mem).getNome()%></option>
                 <%}%>
             </select>

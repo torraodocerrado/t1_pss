@@ -1,7 +1,6 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.Professor"%>
 <%@page import="model.Colaborador"%>
-<%@page import="controller.Memoria"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <div class="element-multiple"><label class="title">Selecione um ou mais colaboradores</label>
     <div class="large">

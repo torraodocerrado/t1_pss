@@ -1,5 +1,4 @@
 <%@page import="model.Aluno"%>
-<%@page import="controller.Memoria"%>
 <%@page import="model.Professor"%>
 <!DOCTYPE html>
 <html>
@@ -14,7 +13,7 @@
 
         <jsp:include page="helpers/msgSalvo.jsp" />
 
-        <form action="Controller" class="formoid-metro-cyan" style="background-color:#FFFFFF;font-size:14px;font-family:'Trebuchet MS',Helvetica,sans-serif;color:#666666;max-width:800px;min-width:150px" method="post"><div class="title"><h2>Incluir orientação</h2></div>
+        <form action="ControllerProducaoAcademica?cmd=incluirOrientacao" class="formoid-metro-cyan" style="background-color:#FFFFFF;font-size:14px;font-family:'Trebuchet MS',Helvetica,sans-serif;color:#666666;max-width:800px;min-width:150px" method="post"><div class="title"><h2>Incluir orientação</h2></div>
             <div class="element-input"><label class="title">Título<span class="required">*</span></label><input class="large" type="text" name="titulo" required="required"/></div>
             <div class="element-select"><label class="title">Tipo<span class="required">*</span></label>
                 <div class="large">
@@ -26,7 +25,6 @@
                     </span>
                 </div>
             </div>
-
 
             <jsp:include page="helpers/boxProfessor.jsp"/>
             <jsp:include page="helpers/boxAluno.jsp"/>

@@ -6,7 +6,7 @@ import java.util.Date;
  *
  * @author Rafael
  */
-public class Aluno extends Colaborador {
+public abstract class Aluno extends Colaborador {
 
     private Professor orientador;
     private Date dataIngresso;

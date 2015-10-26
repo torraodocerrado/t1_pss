@@ -9,7 +9,7 @@ package model;
  *
  * @author Rafael
  */
-public class ProducaoAcademica {
+public abstract class ProducaoAcademica {
 
     private String titulo;
 
