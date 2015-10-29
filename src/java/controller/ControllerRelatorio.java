@@ -2,8 +2,11 @@ package controller;
 
 import javax.servlet.annotation.WebServlet;
 import model.Colaborador;
+import model.Orientacao;
 import model.Projeto;
+import model.Publicacao;
 import model.RelatorioColaborador;
+import model.RelatorioProducaoAcademica;
 
 /**
  *
@@ -37,4 +40,18 @@ public class ControllerRelatorio extends Base {
         }
         return relColaborador;
     }
+
+    public void consultaProducaoAcademica() {
+        RelatorioProducaoAcademica relatorio = new RelatorioProducaoAcademica(
+                mem.getAll(Colaborador.class).size(),
+                this.getProjetosEmElaboracao().size(),
+                this.getProjetosEmAndamento().size(),
+                this.getProjetosConcluido().size(),
+                mem.getAll(Projeto.class).size(),
+                mem.getAll(Publicacao.class).size(),
+                mem.getAll(Orientacao.class).size());
+
+        this.request.setAttribute("relatorio", relatorio);
+    }
+
 }

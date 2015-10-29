@@ -1,6 +1,5 @@
 package controller;
 
-import memoria.Memoria;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -13,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import memoria.Memoria;
 import model.Aluno;
 import model.AlunoGraduacao;
 import model.Colaborador;
@@ -147,23 +147,15 @@ public class Base extends HttpServlet {
     }
 
     public ArrayList<Projeto> getProjetosEmElaboracao() {
-        ArrayList<Projeto> result = new ArrayList<>();
-        for (Object memItem : mem.getAll()) {
-            if ((memItem instanceof Projeto) && ((Projeto) memItem).getSituacao().equals("Em elaboração")) {
-                result.add((Projeto) memItem);
-            }
-        }
-        return result;
+        return this.getAllProjetosPorSituacao("Em elaboração");
     }
 
     public ArrayList<Projeto> getProjetosEmAndamento() {
-        ArrayList<Projeto> result = new ArrayList<>();
-        for (Object memItem : mem.getAll()) {
-            if ((memItem instanceof Projeto) && ((Projeto) memItem).getSituacao().equals("Em andamento")) {
-                result.add((Projeto) memItem);
-            }
-        }
-        return result;
+        return this.getAllProjetosPorSituacao("Em andamento");
+    }
+
+    public ArrayList<Projeto> getProjetosConcluido() {
+        return this.getAllProjetosPorSituacao("Concluído");
     }
 
     public Projeto getProjeto(String parameter) {
@@ -173,6 +165,16 @@ public class Base extends HttpServlet {
             }
         }
         return null;
+    }
+
+    private ArrayList<Projeto> getAllProjetosPorSituacao(String situacao) {
+        ArrayList<Projeto> result = new ArrayList<>();
+        for (Object memItem : mem.getAll(Projeto.class)) {
+            if (((Projeto) memItem).getSituacao().equals(situacao)) {
+                result.add((Projeto) memItem);
+            }
+        }
+        return result;
     }
 
     protected void debugParameters() {

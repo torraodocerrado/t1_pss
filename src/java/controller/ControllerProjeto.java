@@ -53,17 +53,18 @@ public class ControllerProjeto extends Base {
             }
             for (Object proj : mem.getAll()) {
                 if ((proj instanceof Projeto) && (((Projeto) proj).getTitulo().equals(this.request.getParameter("projeto")))) {
-                    for (Object col : mem.getAll()) {
-                        if ((col instanceof Colaborador) && (colSelecionados.contains(((Colaborador) col).getId()))) {
-                            if (!((Projeto) proj).colaboradores.contains((Colaborador) col)) {
-                                ((Projeto) proj).colaboradores.add((Colaborador) col);
-                            }
-                        } else if ((col instanceof Professor) && (profSelecionados.contains(((Professor) col).getId()))) {
+                    for (Object col : mem.getAll(Colaborador.class)) {
+                        if ((col instanceof Professor) && (profSelecionados.contains(((Professor) col).getId()))) {
                             if (!((Projeto) proj).professores.contains((Professor) col)) {
                                 ((Projeto) proj).professores.add((Professor) col);
+                                ((Colaborador) col).projetos.add((Projeto) proj);
+                            }
+                        } else if ((colSelecionados.contains(((Colaborador) col).getId()))) {
+                            if (!((Projeto) proj).colaboradores.contains((Colaborador) col)) {
+                                ((Projeto) proj).colaboradores.add((Colaborador) col);
+                                ((Colaborador) col).projetos.add((Projeto) proj);
                             }
                         }
-                        ((Colaborador) col).projetos.add((Projeto) proj);
                     }
                 }
             }
