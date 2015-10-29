@@ -12,7 +12,7 @@ import model.Professor;
  * @author Rafael
  */
 @WebServlet(name = "ControllerColaborador", urlPatterns = {"/ControllerColaborador"})
-public class ControllerColaborador extends Base {
+public class ControllerColaborador extends Controller {
 
     /**
      * Returns a short description of the servlet.

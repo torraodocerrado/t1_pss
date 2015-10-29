@@ -7,7 +7,7 @@ import javax.servlet.annotation.WebServlet;
  * @author Rafael
  */
 @WebServlet(name = "Pesquisar", urlPatterns = {"/Pesquisar"})
-public class Pesquisar extends Base {
+public class Pesquisar extends Controller {
 
     public void consultaProjeto() {
 

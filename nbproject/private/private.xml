@@ -4,14 +4,19 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/_workspace/www/t1_pss/web/consultaColaborador.jsp</file>
-            <file>file:/C:/_workspace/www/t1_pss/web/memoria.jsp</file>
             <file>file:/C:/_workspace/www/t1_pss/src/java/controller/ControllerRelatorio.java</file>
             <file>file:/C:/_workspace/www/t1_pss/web/consultaProjeto.jsp</file>
-            <file>file:/C:/_workspace/www/t1_pss/web/incluirOrientacao.jsp</file>
-            <file>file:/C:/_workspace/www/t1_pss/src/java/controller/ControllerColaborador.java</file>
             <file>file:/C:/_workspace/www/t1_pss/src/java/controller/ControllerProjeto.java</file>
             <file>file:/C:/_workspace/www/t1_pss/web/incluirProjeto.jsp</file>
             <file>file:/C:/_workspace/www/t1_pss/web/incluirProfessor.jsp</file>
+            <file>file:/C:/_workspace/www/t1_pss/web/index.html</file>
+            <file>file:/C:/_workspace/www/t1_pss/src/java/controller/ControllerProducaoAcademica.java</file>
+            <file>file:/C:/_workspace/www/t1_pss/web/consultaProducaoAcademica.jsp</file>
+            <file>file:/C:/_workspace/www/t1_pss/web/incluirOrientacao.jsp</file>
+            <file>file:/C:/_workspace/www/t1_pss/src/java/controller/ControllerColaborador.java</file>
+            <file>file:/C:/_workspace/www/t1_pss/src/java/controller/Controller.java</file>
+            <file>file:/C:/_workspace/www/t1_pss/src/java/model/RelatorioProducaoAcademica.java</file>
+            <file>file:/C:/_workspace/www/t1_pss/web/helpers/pesquisar.jsp</file>
         </group>
     </open-files>
 </project-private>

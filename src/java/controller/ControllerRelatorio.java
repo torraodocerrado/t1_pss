@@ -13,7 +13,7 @@ import model.RelatorioProducaoAcademica;
  * @author Rafael
  */
 @WebServlet(name = "ControllerRelatorio", urlPatterns = {"/ControllerRelatorio"})
-public class ControllerRelatorio extends Base {
+public class ControllerRelatorio extends Controller {
 
     public void consultaProjeto() {
         if (this.request.getParameter("projeto") != null) {

@@ -14,7 +14,7 @@ import model.Publicacao;
  * @author Rafael
  */
 @WebServlet(name = "ControllerProducaoAcademica", urlPatterns = {"/ControllerProducaoAcademica"})
-public class ControllerProducaoAcademica extends Base {
+public class ControllerProducaoAcademica extends Controller {
 
     /**
      * Returns a short description of the servlet.
@@ -83,6 +83,15 @@ public class ControllerProducaoAcademica extends Base {
         }
         this.request.setAttribute("listaProfessores", mem.getAll(Professor.class));
         this.request.setAttribute("listaAlunos", mem.getAll(Aluno.class));
+    }
+
+    private Aluno getAluno(int id) {
+        for (Object ojb : mem.getAll()) {
+            if ((ojb instanceof Aluno) && (((Aluno) ojb).getId() == id)) {
+                return (Aluno) ojb;
+            }
+        }
+        return null;
     }
 
 }

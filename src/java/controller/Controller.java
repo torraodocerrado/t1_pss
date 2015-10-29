@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -13,7 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import memoria.Memoria;
-import model.Aluno;
 import model.AlunoGraduacao;
 import model.Colaborador;
 import model.Professor;
@@ -24,7 +22,7 @@ import model.Projeto;
  * @author Rafael
  */
 @WebServlet(name = "Base", urlPatterns = {"/Base"})
-public class Base extends HttpServlet {
+public class Controller extends HttpServlet {
 
     protected Memoria mem;
     protected HttpServletRequest request;
@@ -48,15 +46,13 @@ public class Base extends HttpServlet {
         this.output = "";
         this.param = "";
         this.response.setContentType("text/html;charset=UTF-8");
-        if (this.request.getParameterMap().containsKey("memoria")) {
-            this.response.sendRedirect("memoria.jsp?memoria=" + this.request.getParameter("memoria"));
-        } else if (this.request != null && this.request.getParameterMap().containsKey("cmd") && !this.request.getParameter("cmd").isEmpty()) {
+        if (this.request != null && this.request.getParameterMap().containsKey("cmd") && !this.request.getParameter("cmd").isEmpty()) {
             try {
                 Method method = this.getClass().getMethod(this.request.getParameter("cmd"));
                 method.invoke(this);
                 this.request.getRequestDispatcher(this.request.getParameter("cmd") + ".jsp" + param).forward(this.request, this.response);
             } catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
-                Logger.getLogger(Base.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
@@ -100,7 +96,7 @@ public class Base extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    public Base() {
+    public Controller() {
         if (mem == null) {
             mem = new Memoria();
         }
@@ -110,15 +106,6 @@ public class Base extends HttpServlet {
         for (Object obj : mem.getAll()) {
             if ((obj instanceof Professor) && (((Professor) obj).getId() == id)) {
                 return (Professor) obj;
-            }
-        }
-        return null;
-    }
-
-    public Aluno getAluno(int id) {
-        for (Object ojb : mem.getAll()) {
-            if ((ojb instanceof Aluno) && (((Aluno) ojb).getId() == id)) {
-                return (Aluno) ojb;
             }
         }
         return null;
@@ -177,16 +164,4 @@ public class Base extends HttpServlet {
         return result;
     }
 
-    protected void debugParameters() {
-        Enumeration<String> parameterNames = request.getParameterNames();
-        while (parameterNames.hasMoreElements()) {
-            String paramName = parameterNames.nextElement();
-            System.out.println(paramName);
-            String[] paramValues = request.getParameterValues(paramName);
-            for (int i = 0; i < paramValues.length; i++) {
-                System.out.println(paramValues[i]);
-
-            }
-        }
-    }
 }
