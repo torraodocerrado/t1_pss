@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="element-date"><label class="title">Data de fim<span class="required">*</span></label>
-                <input class="small" data-format="yyyy-mm-dd" type="date" name="dataFim" required="required" placeholder="yyyy-mm-dd"/>
+                <input class="small" data-format="dd/mm/yyyy" type="date" name="dataFim" required="required" placeholder="dd/mm/yyyy"/>
             </div>
 
             <jsp:include page="helpers/submit.jsp"/>

@@ -15,7 +15,7 @@
             <div class="element-input"><label class="title">Id<span class="required">*</span></label><input class="small" type="number" name="id" required="required"/></div>
             <div class="element-input"><label class="title">Nome<span class="required">*</span></label><input class="large" type="text" name="nome" required="required"/></div>
             <div class="element-input"><label class="title">E-mail<span class="required">*</span></label><input class="medium" type="text" name="email" required="required"/></div>
-            <div class="element-date"><label class="title">Data de ingresso<span class="required">*</span></label><input class="small" data-format="yyyy-mm-dd" type="date" name="dataIngresso" required="required" placeholder="yyyy-mm-dd"/></div>
+            <div class="element-date"><label class="title">Data de ingresso<span class="required">*</span></label><input class="small" data-format="dd/mm/yyyy" type="date" name="dataIngresso" required="required" placeholder="dd/mm/yyyy"/></div>
 
             <div class="element-select"><label class="title">Curso<span class="required">*</span></label><div class="small"><span>
                         <select name="curso" required="required">

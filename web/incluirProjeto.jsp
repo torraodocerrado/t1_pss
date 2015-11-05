@@ -13,7 +13,7 @@
 
         <form action="ControllerProjeto?cmd=incluirProjeto" class="formoid-metro-cyan" style="background-color:#FFFFFF;font-size:14px;font-family:'Trebuchet MS',Helvetica,sans-serif;color:#666666;max-width:800px;min-width:150px" method="post"><div class="title"><h2>Incluir projeto</h2></div>
             <div class="element-input"><label class="title">Titulo<span class="required">*</span></label><input class="small" type="text" name="titulo" required="required"/></div>
-            <div class="element-date"><label class="title">Data de inícino<span class="required">*</span></label><input class="small" data-format="yyyy-mm-dd" type="date" name="dataInicio" required="required" placeholder="yyyy-mm-dd"/></div>
+            <div class="element-date"><label class="title">Data de inícino<span class="required">*</span></label><input class="small" data-format="dd/mm/yyyy" type="date" name="dataInicio" required="required" placeholder="dd/mm/yyyy"/></div>
             <div class="element-input"><label class="title">Valor financiado<span class="required">*</span></label><input class="small" type="number" name="valorFinanciado" required="required"/></div>
             <div class="element-input"><label class="title">Agência financiadora<span class="required">*</span></label><input class="medium" type="text" name="agenciaFinanciadora" required="required"/></div>
             <div class="element-textarea"><label class="title">Objetivo<span class="required">*</span></label><textarea class="small" name="objetivo" cols="20" rows="5" required="required"></textarea></div>

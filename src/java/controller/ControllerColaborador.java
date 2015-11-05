@@ -1,6 +1,9 @@
 package controller;
 
-import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.annotation.WebServlet;
 import model.AlunoGraduacao;
 import model.AlunoPosGraduacao;
@@ -26,32 +29,40 @@ public class ControllerColaborador extends Controller {
 
     public void incluirAlunoGraduacao() {
         if (this.request.getParameter("id") != null) {
-            AlunoGraduacao aluno = new AlunoGraduacao(
-                    Integer.valueOf(this.request.getParameter("id")),
-                    this.request.getParameter("nome"),
-                    this.request.getParameter("email"),
-                    this.getProfessor(Integer.valueOf(this.request.getParameter("professor"))),
-                    Date.valueOf(this.request.getParameter("dataIngresso"))
-            );
-            mem.add(aluno);
-            this.param = "?status=1";
+            try {
+                AlunoGraduacao aluno = new AlunoGraduacao(
+                        Integer.valueOf(this.request.getParameter("id")),
+                        this.request.getParameter("nome"),
+                        this.request.getParameter("email"),
+                        this.getProfessor(Integer.valueOf(this.request.getParameter("professor"))),
+                        new SimpleDateFormat("dd/MM/yyyy").parse(this.request.getParameter("dataIngresso"))
+                );
+                mem.add(aluno);
+                this.param = "?status=1";
+            } catch (ParseException ex) {
+                Logger.getLogger(ControllerColaborador.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         this.request.setAttribute("listaProfessores", mem.getAll(Professor.class));
     }
 
     public void incluirAlunoPosGraduacao() {
         if (this.request.getParameter("id") != null) {
-            AlunoPosGraduacao aluno = new AlunoPosGraduacao(
-                    Integer.valueOf(this.request.getParameter("id")),
-                    this.request.getParameter("nome"),
-                    this.request.getParameter("email"),
-                    this.getProfessor(Integer.valueOf(this.request.getParameter("professor"))),
-                    Date.valueOf(this.request.getParameter("dataIngresso")),
-                    this.request.getParameter("regime"),
-                    this.request.getParameter("curso")
-            );
-            mem.add(aluno);
-            this.param = "?status=1";
+            try {
+                AlunoPosGraduacao aluno = new AlunoPosGraduacao(
+                        Integer.valueOf(this.request.getParameter("id")),
+                        this.request.getParameter("nome"),
+                        this.request.getParameter("email"),
+                        this.getProfessor(Integer.valueOf(this.request.getParameter("professor"))),
+                        new SimpleDateFormat("dd/MM/yyyy").parse(this.request.getParameter("dataIngresso")),
+                        this.request.getParameter("regime"),
+                        this.request.getParameter("curso")
+                );
+                mem.add(aluno);
+                this.param = "?status=1";
+            } catch (ParseException ex) {
+                Logger.getLogger(ControllerColaborador.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         this.request.setAttribute("listaProfessores", mem.getAll(Professor.class));
     }

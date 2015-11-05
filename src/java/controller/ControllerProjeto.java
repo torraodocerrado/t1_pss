@@ -1,7 +1,10 @@
 package controller;
 
-import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.annotation.WebServlet;
 import model.Colaborador;
 import model.Professor;
@@ -26,16 +29,20 @@ public class ControllerProjeto extends Controller {
 
     public void incluirProjeto() {
         if (this.request.getParameter("titulo") != null) {
-            Projeto projeto = new Projeto(
-                    this.request.getParameter("titulo"),
-                    this.request.getParameter("agenciaFinanciadora"),
-                    this.request.getParameter("valorFinanciado"),
-                    this.request.getParameter("objetivo"),
-                    this.request.getParameter("descricao"),
-                    Date.valueOf(this.request.getParameter("dataInicio"))
-            );
-            mem.add(projeto);
-            this.param = "?status=1";
+            try {
+                Projeto projeto = new Projeto(
+                        this.request.getParameter("titulo"),
+                        this.request.getParameter("agenciaFinanciadora"),
+                        this.request.getParameter("valorFinanciado"),
+                        this.request.getParameter("objetivo"),
+                        this.request.getParameter("descricao"),
+                        new SimpleDateFormat("dd/MM/yyyy").parse(this.request.getParameter("dataInicio"))
+                );
+                mem.add(projeto);
+                this.param = "?status=1";
+            } catch (ParseException ex) {
+                Logger.getLogger(ControllerProjeto.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 
@@ -91,8 +98,12 @@ public class ControllerProjeto extends Controller {
         if (this.request.getParameter("projeto") != null) {
             for (Object obj : mem.getAll()) {
                 if ((obj instanceof Projeto) && (((Projeto) obj).getTitulo().equals(this.request.getParameter("projeto")))) {
-                    ((Projeto) obj).setSituacao("Concluído");
-                    ((Projeto) obj).setDataFim(Date.valueOf(this.request.getParameter("dataFim")));
+                    try {
+                        ((Projeto) obj).setSituacao("Concluído");
+                        ((Projeto) obj).setDataFim(new SimpleDateFormat("dd/MM/yyyy").parse(this.request.getParameter("dataFim")));
+                    } catch (ParseException ex) {
+                        Logger.getLogger(ControllerProjeto.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
             }
             this.param = "?status=1";
