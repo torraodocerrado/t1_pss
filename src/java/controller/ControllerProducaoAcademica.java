@@ -67,7 +67,7 @@ public class ControllerProducaoAcademica extends Controller {
         this.request.setAttribute("listaProfessores", mem.getAll(Professor.class));
         this.request.setAttribute("listaAlunos", mem.getAll(Aluno.class));
         this.request.setAttribute("listaColaboradores", mem.getAll(Colaborador.class));
-        this.request.setAttribute("listaProjetosEmAndamento", this.getProjetosEmAndamento());
+        this.request.setAttribute("listaProjetosEmAndamento", this.getAllProjetosPorSituacao("Em andamento"));
         this.request.setAttribute("listaParticipantesProjeto", this.getParticipantesProjeto());
     }
 

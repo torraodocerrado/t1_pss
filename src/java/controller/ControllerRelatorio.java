@@ -44,14 +44,24 @@ public class ControllerRelatorio extends Controller {
     public void consultaProducaoAcademica() {
         RelatorioProducaoAcademica relatorio = new RelatorioProducaoAcademica(
                 mem.getAll(Colaborador.class).size(),
-                this.getProjetosEmElaboracao().size(),
-                this.getProjetosEmAndamento().size(),
-                this.getProjetosConcluido().size(),
+                this.getAllProjetosPorSituacao("Em elaboração").size(),
+                this.getAllProjetosPorSituacao("Em andamento").size(),
+                this.getAllProjetosPorSituacao("Concluído").size(),
                 mem.getAll(Projeto.class).size(),
                 mem.getAll(Publicacao.class).size(),
-                mem.getAll(Orientacao.class).size());
+                mem.getAll(Orientacao.class).size()
+        );
 
         this.request.setAttribute("relatorio", relatorio);
+    }
+
+    private Projeto getProjeto(String parameter) {
+        for (Object memItem : mem.getAll()) {
+            if ((memItem instanceof Projeto) && (((Projeto) memItem).getTitulo().equals(parameter))) {
+                return (Projeto) memItem;
+            }
+        }
+        return null;
     }
 
 }

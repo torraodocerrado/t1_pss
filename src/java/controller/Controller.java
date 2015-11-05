@@ -123,9 +123,9 @@ public class Controller extends HttpServlet {
         return temp;
     }
 
-    public int getNumeroProjetosAndamentoAlunoParticipa(AlunoGraduacao aluno) {
+    private int getNumeroProjetosAndamentoAlunoParticipa(AlunoGraduacao aluno) {
         int num = 0;
-        for (Projeto mem : this.getProjetosEmAndamento()) {
+        for (Projeto mem : this.getAllProjetosPorSituacao("Em andamento")) {
             if (mem.colaboradores.contains(aluno)) {
                 num++;
             }
@@ -133,28 +133,7 @@ public class Controller extends HttpServlet {
         return num;
     }
 
-    public ArrayList<Projeto> getProjetosEmElaboracao() {
-        return this.getAllProjetosPorSituacao("Em elaboração");
-    }
-
-    public ArrayList<Projeto> getProjetosEmAndamento() {
-        return this.getAllProjetosPorSituacao("Em andamento");
-    }
-
-    public ArrayList<Projeto> getProjetosConcluido() {
-        return this.getAllProjetosPorSituacao("Concluído");
-    }
-
-    public Projeto getProjeto(String parameter) {
-        for (Object memItem : mem.getAll()) {
-            if ((memItem instanceof Projeto) && (((Projeto) memItem).getTitulo().equals(parameter))) {
-                return (Projeto) memItem;
-            }
-        }
-        return null;
-    }
-
-    private ArrayList<Projeto> getAllProjetosPorSituacao(String situacao) {
+    public ArrayList<Projeto> getAllProjetosPorSituacao(String situacao) {
         ArrayList<Projeto> result = new ArrayList<>();
         for (Object memItem : mem.getAll(Projeto.class)) {
             if (((Projeto) memItem).getSituacao().equals(situacao)) {

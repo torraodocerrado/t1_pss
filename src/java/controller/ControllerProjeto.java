@@ -71,7 +71,7 @@ public class ControllerProjeto extends Controller {
             this.param = "?status=1";
         }
         this.request.setAttribute("listaProfessores", mem.getAll(Professor.class));
-        this.request.setAttribute("listaProjetosElaboracao", this.getProjetosEmElaboracao());
+        this.request.setAttribute("listaProjetosElaboracao", this.getAllProjetosPorSituacao("Em elaboração"));
         this.request.setAttribute("listaParticipantesProjeto", this.getParticipantesProjeto());
     }
 
@@ -102,7 +102,7 @@ public class ControllerProjeto extends Controller {
 
     private ArrayList<Projeto> getProjetoMudancaSituacaoConcluido() {
         ArrayList<Projeto> result = new ArrayList<>();
-        result.addAll(this.getProjetosEmAndamento());
+        result.addAll(this.getAllProjetosPorSituacao("Em andamento"));
         result = this.validaProjetosMudancaSituacao(result);
         return result;
     }
@@ -119,7 +119,7 @@ public class ControllerProjeto extends Controller {
 
     private ArrayList<Projeto> getProjetoMudancaSituacaoEmAndamento() {
         ArrayList<Projeto> result = new ArrayList<>();
-        result.addAll(this.getProjetosEmElaboracao());
+        result.addAll(this.getAllProjetosPorSituacao("Em elaboração"));
         result = this.validaProjetosMudancaSituacao(result);
         return result;
     }
